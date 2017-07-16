@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">領養動物</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="toolbartitle">領養動物</string>
+    <string name="tootbarsubtitle">Animal adoption</string>
+
+    <string-array name="animal">
+        <item>運動犬</item>
+        <item>獵犬</item>
+        <item>工作犬</item>
+        <item>㹴犬</item>
+        <item>玩賞犬</item>
+        <item>非運動犬</item>
+        <item>畜牧犬</item>
+    </string-array>
+</resources>
