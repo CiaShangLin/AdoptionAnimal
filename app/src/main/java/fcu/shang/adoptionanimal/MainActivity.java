@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView.Adapter infoAdapter;
     private RecyclerView.LayoutManager infoLayoutManager;
     private Spinner adoptionSp,dogcatSp;
-
+    private AnimalInfo animalInfo;
 
 
 
@@ -51,11 +51,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 1:
-                    String json=msg.getData().getString(GSON);
-                    Gson gson=new Gson();                        //變數可以缺少,不一定都要有
-                    Type arrayAnimal=new TypeToken<List<Animal>>(){}.getType();
-                    animalList=gson.fromJson(json,arrayAnimal);
-                    shelterName();
+                    animalList=animalInfo.getAnimalList();
+                    setShelterName();
                     initLayout();
                     break;
             }
@@ -68,10 +65,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         inputData();
-
-
-
-
     }
 
     private void initLayout(){
@@ -95,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoLayoutManager=new GridLayoutManager(this,2);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
-        infoAdapter=new MyInfoAdapter(animalList,this);
+        infoAdapter=new MyInfoAdapter(this,animalInfo);
         infoRecylerView.setAdapter(infoAdapter);
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
@@ -106,11 +99,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void inputData(){                         //取得所有動物資訊列表
-        AnimalInfo info=new AnimalInfo(handler,MainActivity.this);
-        info.getInfo();
+        animalInfo=new AnimalInfo(handler,MainActivity.this);
+        animalInfo.getInfo();
     }
 
-    private void shelterName(){                             //取出所有收容所名稱,且不重複
+    private void setShelterName(){                             //取出所有收容所名稱,且不重複
+
         HashSet shelterSet=new HashSet();
         for(int i=0;i<animalList.size();i++){
             shelterSet.add(animalList.get(i).getShelter_name());

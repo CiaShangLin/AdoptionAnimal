@@ -1,5 +1,7 @@
 package fcu.shang.adoptionanimal;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by SERS on 2017/7/13.
  */
@@ -34,7 +36,15 @@ public class Animal {
     private String cDate;                //異動時間
     private String shelter_address;        //地址
     private String shelter_tel;            //聯絡電話等欄位資訊
+    private Bitmap image=null;
 
+    public Bitmap getImageBitmap() {
+        return image;
+    }
+
+    public void setImageBitmap(Bitmap image) {
+        this.image = image;
+    }
 
     public String getAnimal_place() {
         return animal_place;
