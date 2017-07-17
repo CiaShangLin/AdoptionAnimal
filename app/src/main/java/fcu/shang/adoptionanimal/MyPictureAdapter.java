@@ -1,24 +1,15 @@
 package fcu.shang.adoptionanimal;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 
 import java.util.ArrayList;
 
@@ -26,20 +17,15 @@ import java.util.ArrayList;
  * Created by SERS on 2017/7/14.
  */
 
-public class MyInfoAdapter extends RecyclerView.Adapter<MyInfoAdapter.ViewHolder>{
+public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.ViewHolder>{
 
     private ArrayList<Animal> animalList;
     private Context context;
-    private RequestQueue requestQueue;
-    private ImageLoader imageLoader;
     private AnimalInfo animalInfo;
 
 
-    public MyInfoAdapter(Context context,AnimalInfo animalInfo) {
-        //this.animalList=animalList;
+    public MyPictureAdapter(Context context, AnimalInfo animalInfo) {       //之後應該會有其他建構直,用在篩選過後的
         this.context=context;
-        //requestQueue= Volley.newRequestQueue(context);
-        //imageLoader=new ImageLoader(requestQueue,new BitmapCache());
         this.animalInfo=animalInfo;
         this.animalList=animalInfo.getAnimalList();
     }
@@ -55,12 +41,11 @@ public class MyInfoAdapter extends RecyclerView.Adapter<MyInfoAdapter.ViewHolder
             mNetworkImageView=(NetworkImageView)v.findViewById(R.id.img);
             mNetworkImageView.setDefaultImageResId(R.drawable.animal);
             mNetworkImageView.setErrorImageResId(R.drawable.failed_image);
-
         }
     }
 
     @Override
-    public MyInfoAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyPictureAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_layout,parent,false);
         ViewHolder viewHolder=new ViewHolder(v);
@@ -68,7 +53,7 @@ public class MyInfoAdapter extends RecyclerView.Adapter<MyInfoAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(MyInfoAdapter.ViewHolder holder,int position) {
+    public void onBindViewHolder(MyPictureAdapter.ViewHolder holder, int position) {
         holder.mTextView.setText(animalList.get(position).getAnimal_kind());
         //holder.mNetworkImageView.setImageUrl(animalList.get(position).getAlbum_file(),imageLoader);
         animalInfo.setImage(holder.mNetworkImageView,animalList.get(position));

@@ -3,14 +3,8 @@ package fcu.shang.adoptionanimal;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.util.SortedList;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,16 +16,9 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -88,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoLayoutManager=new GridLayoutManager(this,2);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
-        infoAdapter=new MyInfoAdapter(this,animalInfo);
+        infoAdapter=new MyPictureAdapter(this,animalInfo);
         infoRecylerView.setAdapter(infoAdapter);
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
