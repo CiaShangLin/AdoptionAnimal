@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -130,6 +131,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.action_settings) {
             return true;
+        }
+        if(id == R.id.menu_edit){
+            infoLayoutManager=new LinearLayoutManager(this);
+            infoRecylerView.setLayoutManager(infoLayoutManager);
+
+            infoAdapter=new MyListAdapter(animalInfo,this);
+            infoRecylerView.setAdapter(infoAdapter);
         }
 
         return super.onOptionsItemSelected(item);
