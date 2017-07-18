@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Spinner adoptionSp,dogcatSp;
     private AnimalInfo animalInfo;
 
-     /*GIT TEST*/
+     /*GIT 應該用SSH clone下來,才能在別台電腦上傳 大概吧*/
 
     private Handler handler=new Handler(){
         @Override
