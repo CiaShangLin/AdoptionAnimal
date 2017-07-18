@@ -2,10 +2,12 @@ package fcu.shang.adoptionanimal;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -31,14 +33,18 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView listBody,listSex;
+        public TextView listBody,listSex,listShelter,listID;
         public ImageView listImg;
+        public LinearLayout listLayout;
 
         public ViewHolder(View v) {
             super(v);
             listBody=(TextView)v.findViewById(R.id.listBody);
             listSex=(TextView)v.findViewById(R.id.listSex);
             listImg=(ImageView)v.findViewById(R.id.listImg);
+            listShelter=(TextView)v.findViewById(R.id.listShelter);
+            listID=(TextView)v.findViewById(R.id.listID);
+            listLayout=(LinearLayout)v.findViewById(R.id.listLayout);
         }
     }
 
@@ -63,6 +69,15 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
             holder.listSex.setText(sex_male);
         }else{
             holder.listSex.setText(sex_female);
+        }
+
+        holder.listID.setText(String.valueOf(position+1)+".");
+        holder.listShelter.setText(animalList.get(position).getShelter_name());
+
+        if(position % 2 == 0){
+            holder.listLayout.setBackground(context.getResources().getDrawable(R.color.colorOrange));
+        }else{
+            holder.listLayout.setBackground(context.getResources().getDrawable(R.color.colorWhite));
         }
 
 
