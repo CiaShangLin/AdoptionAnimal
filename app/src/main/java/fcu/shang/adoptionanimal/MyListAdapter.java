@@ -2,13 +2,11 @@ package fcu.shang.adoptionanimal;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.android.volley.toolbox.NetworkImageView;
-
 import java.util.ArrayList;
 
 /**
@@ -19,13 +17,14 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     private ArrayList<Animal> animalList;
     private AnimalInfo animalInfo;
-    
-    String sex_male="♂",female="♀";
+    private Context context;
 
-    public MyListAdapter(AnimalInfo animalInfo){
+    String sex_male="♂",sex_female="♀";
+
+    public MyListAdapter(AnimalInfo animalInfo,Context context){
         this.animalInfo=animalInfo;
         animalList=animalInfo.getAnimalList();
-
+        this.context=context;
     }
 
 
@@ -45,16 +44,32 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     @Override
     public MyListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclist_layout,parent,false);
+        ViewHolder viewHolder=new ViewHolder(v);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyListAdapter.ViewHolder holder, int position) {
+        if(animalList.get(position).getAnimal_kind().equals("狗")){
+            holder.listImg.setImageDrawable(context.getResources().getDrawable(R.drawable.dog));
+        }else{
+            holder.listImg.setImageDrawable(context.getResources().getDrawable(R.drawable.cat));
+        }
+
+        holder.listBody.setText(animalList.get(position).getAnimal_bodytype());
+
+        if(animalList.get(position).getAnimal_sex().equals("M")){
+            holder.listSex.setText(sex_male);
+        }else{
+            holder.listSex.setText(sex_female);
+        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return animalList.size();
     }
 }
