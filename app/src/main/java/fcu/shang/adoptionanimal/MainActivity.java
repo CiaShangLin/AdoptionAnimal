@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Spinner adoptionSp,dogcatSp;
     private AnimalInfo animalInfo;
 
-/*GIT*/
+     /*GIT TEST*/
 
     private Handler handler=new Handler(){
         @Override
