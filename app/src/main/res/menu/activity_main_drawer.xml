@@ -3,28 +3,32 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:title="Import" />
+            android:id="@+id/menu_shelter"
+            android:title="收容所" />
         <item
-            android:id="@+id/text"
+            android:id="@+id/menu_doctors"
             android:icon="@mipmap/ic_launcher"
-            android:title="TEST">
-
+            android:title="獸醫師">
         </item>
 
+        <item
+            android:id="@+id/menu_lost"
+            android:icon="@mipmap/ic_launcher"
+            android:title="寵物遺失">
+        </item>
 
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/menu_email"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="聯絡方法" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/menu_maker"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="製作者" />
         </menu>
     </item>
 

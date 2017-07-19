@@ -10,12 +10,8 @@
     <string name="tootbarsubtitle">Animal adoption</string>
 
     <string-array name="animal">
-        <item>運動犬</item>
-        <item>獵犬</item>
-        <item>工作犬</item>
-        <item>㹴犬</item>
-        <item>玩賞犬</item>
-        <item>非運動犬</item>
-        <item>畜牧犬</item>
+        <item>全部</item>
+        <item>狗</item>
+        <item>貓</item>
     </string-array>
 </resources>

@@ -77,14 +77,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoLayoutManager=new GridLayoutManager(this,2);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
-        infoAdapter=new MyPictureAdapter(this,animalInfo);
+        infoAdapter=new MyPictureAdapter(animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
         dogcatSp=(Spinner)findViewById(R.id.dogcatSp);
 
         adoptionSp.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,shelterName));
-        dogcatSp.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,new String[]{"全部","狗","貓"}));
+        dogcatSp.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,getResources().getStringArray(R.array.animal)));
+
+
     }
 
     private void inputData(){                         //取得所有動物資訊列表
@@ -132,11 +134,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id == R.id.menu_edit){
+        if(id == R.id.menu_search){
             infoLayoutManager=new LinearLayoutManager(this);
             infoRecylerView.setLayoutManager(infoLayoutManager);
 
-            infoAdapter=new MyListAdapter(animalInfo,this);
+            infoAdapter=new MyListAdapter(animalList,this);
             infoRecylerView.setAdapter(infoAdapter);
         }
 

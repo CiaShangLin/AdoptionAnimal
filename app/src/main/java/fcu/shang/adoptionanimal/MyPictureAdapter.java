@@ -20,14 +20,12 @@ import java.util.ArrayList;
 public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.ViewHolder>{
 
     private ArrayList<Animal> animalList;
-    private Context context;
     private AnimalInfo animalInfo;
 
 
-    public MyPictureAdapter(Context context, AnimalInfo animalInfo) {       //之後應該會有其他建構直,用在篩選過後的
-        this.context=context;
+    public MyPictureAdapter(AnimalInfo animalInfo,ArrayList<Animal> animalList) {       //之後應該會有其他建構直,用在篩選過後的
         this.animalInfo=animalInfo;
-        this.animalList=animalInfo.getAnimalList();
+        this.animalList=animalList;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

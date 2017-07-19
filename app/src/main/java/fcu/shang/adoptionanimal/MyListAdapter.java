@@ -18,14 +18,12 @@ import java.util.ArrayList;
 public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
 
     private ArrayList<Animal> animalList;
-    private AnimalInfo animalInfo;
     private Context context;
 
     String sex_male="♂",sex_female="♀";
 
-    public MyListAdapter(AnimalInfo animalInfo,Context context){
-        this.animalInfo=animalInfo;
-        animalList=animalInfo.getAnimalList();
+    public MyListAdapter(ArrayList<Animal> animalList,Context context){
+        this.animalList=animalList;
         this.context=context;
     }
 
