@@ -1,4 +1,4 @@
-package fcu.shang.adoptionanimal;
+package fcu.shang.adoptionanimal.Animal;
 
 import android.graphics.Bitmap;
 

@@ -14,12 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+
+import fcu.shang.adoptionanimal.Animal.Animal;
+import fcu.shang.adoptionanimal.Animal.AnimalInfo;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -84,8 +89,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dogcatSp=(Spinner)findViewById(R.id.dogcatSp);
 
         adoptionSp.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,shelterName));
-        dogcatSp.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,getResources().getStringArray(R.array.animal)));
-
+        adoptionSp.setOnItemSelectedListener(adoptionSpListener);
+        dogcatSp.setAdapter(new MydogcatSpAdapter(this,getResources().getStringArray(R.array.animal)));
+        dogcatSp.setOnItemSelectedListener(dogcatSpListener);
 
     }
 
@@ -108,6 +114,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             shelterName[count++]=(String)iterator.next();
         }
     }
+
+    AdapterView.OnItemSelectedListener adoptionSpListener=new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    AdapterView.OnItemSelectedListener dogcatSpListener=new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
 
     @Override
     public void onBackPressed() {
