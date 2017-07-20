@@ -167,7 +167,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         if(id == R.id.menu_search){
-            infoLayoutManager=new LinearLayoutManager(this);
+            //infoLayoutManager=new LinearLayoutManager(this);
+            infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
             infoRecylerView.setLayoutManager(infoLayoutManager);
 
             //infoAdapter=new MyListAdapter(animalList,this);

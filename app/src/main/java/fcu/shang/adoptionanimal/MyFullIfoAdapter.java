@@ -20,7 +20,7 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
 
             super(v);
             TextView id=(TextView)v.findViewById(R.id.full_id);
-            TextView local=(TextView)v.findViewById(R.id.full_local);
+
         }
     }
 
@@ -38,6 +38,6 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

@@ -24,100 +24,130 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="流水編號:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="流水編號:"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/full_id"
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="實際所在地:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/full_place"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="實際所在地:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="類型:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/full_local"
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_kind"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="類型:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="性別:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_sex"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="性別:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="體型:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_bodytype"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="體型:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="毛色:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_colour"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,18 +155,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="毛色:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="年紀:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_age"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,18 +177,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="年紀:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="絕育:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_sterilization"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -163,18 +199,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="絕育:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="狂犬病疫苗:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_bacterin"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -182,18 +221,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="狂犬病疫苗:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="尋獲地:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_foundplace"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -201,18 +243,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="尋獲地:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="狀態:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_status"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -220,18 +265,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="狀態:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="資料備註:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_remark"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,18 +287,44 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="資料備註:" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="認養時間(起):"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_opendate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="認養時間(迄):"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/full_closeddate"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="TextView"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -258,18 +332,20 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="認養時間(起):" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="資料異動時間:"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_update"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:gravity="center_vertical"
+                    android:text="textview"
+                    android:textSize="20sp" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -277,103 +353,87 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="認養時間(迄):" />
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="資料建立時間"
+                    android:textSize="20sp" />
 
                 <TextView
-                    style="@style/fullTv2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/full_createtime"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.00"
-                    android:text="TextView" />
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="textview"
+                    android:textSize="20sp" />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-                <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="資料異動時間:" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.31"
-                    android:text="textview" />
-            </LinearLayout>
 
+                <TextView
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="收容所名稱:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/full_shelter_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="textview"
+                    android:textSize="20sp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-                <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="資料建立時間" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.31"
-                    android:text="textview" />
-            </LinearLayout>
 
+                <TextView
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="異動時間:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/full_cDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="textview"
+                    android:textSize="20sp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-                <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="收容所名稱:" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.31"
-                    android:text="textview" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="異動時間:" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.31"
-                    android:text="textview" />
-            </LinearLayout>
+                    android:layout_width="135dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:text="聯絡電話:"
+                    android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
                 <TextView
-                    style="@style/fullTv"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="0.31"
-                    android:text="聯絡電話:" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.31"
-                    android:text="textview" />
+                    android:id="@+id/full_tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="textview"
+                    android:textSize="20sp" />
             </LinearLayout>
 
         </LinearLayout>
