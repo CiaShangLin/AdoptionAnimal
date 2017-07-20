@@ -86,8 +86,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
 
-
-
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
         dogcatSp=(Spinner)findViewById(R.id.dogcatSp);
 

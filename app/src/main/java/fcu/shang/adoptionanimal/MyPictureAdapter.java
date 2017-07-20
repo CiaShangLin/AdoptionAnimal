@@ -32,11 +32,12 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
         this.animalList=animalList;
     }
 
+
     @Override
     public void onClick(View v) {
-        int position=(int)v.getTag();
-        Toast.makeText(context,position+"",Toast.LENGTH_SHORT).show();
+        Toast.makeText(context,v.getTag()+"",Toast.LENGTH_SHORT).show();
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
