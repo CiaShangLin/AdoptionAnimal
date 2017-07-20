@@ -80,12 +80,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoRecylerView=(RecyclerView)findViewById(R.id.infoRecyclerView);
         infoRecylerView.setHasFixedSize(true);
 
-        //infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
+        infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
         infoRecylerView.setLayoutManager(infoLayoutManager);
-        infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);  //FULL INFO
+        //infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);  //FULL INFO
 
-        //infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
-        infoAdapter=new MyFullIfoAdapter();
+        infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
@@ -171,7 +170,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             infoLayoutManager=new LinearLayoutManager(this);
             infoRecylerView.setLayoutManager(infoLayoutManager);
 
-            infoAdapter=new MyListAdapter(animalList,this);
+            //infoAdapter=new MyListAdapter(animalList,this);
+            infoAdapter=new MyFullIfoAdapter();
             infoRecylerView.setAdapter(infoAdapter);
         }
 
