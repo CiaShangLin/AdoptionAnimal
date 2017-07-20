@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/fullImg"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="流水編號:" />
+
+                <TextView
+                    android:id="@+id/full_id"
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="實際所在地:" />
+
+                <TextView
+                    android:id="@+id/full_local"
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="類型:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="性別:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="體型:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="毛色:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="年紀:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="絕育:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="狂犬病疫苗:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="尋獲地:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="狀態:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="資料備註:" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="認養時間(起):" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="認養時間(迄):" />
+
+                <TextView
+                    style="@style/fullTv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.00"
+                    android:text="TextView" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="資料異動時間:" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.31"
+                    android:text="textview" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="資料建立時間" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.31"
+                    android:text="textview" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="收容所名稱:" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.31"
+                    android:text="textview" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="異動時間:" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.31"
+                    android:text="textview" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/fullTv"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.31"
+                    android:text="聯絡電話:" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.31"
+                    android:text="textview" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

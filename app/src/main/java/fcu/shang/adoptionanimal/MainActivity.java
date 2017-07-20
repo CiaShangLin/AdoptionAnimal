@@ -80,11 +80,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoRecylerView=(RecyclerView)findViewById(R.id.infoRecyclerView);
         infoRecylerView.setHasFixedSize(true);
 
-        infoLayoutManager=new GridLayoutManager(this,2);
+        //infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
         infoRecylerView.setLayoutManager(infoLayoutManager);
-        //infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);  //FULL INFO
 
-        infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
+        //infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
+        infoAdapter=new MyFullIfoAdapter();
         infoRecylerView.setAdapter(infoAdapter);
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
