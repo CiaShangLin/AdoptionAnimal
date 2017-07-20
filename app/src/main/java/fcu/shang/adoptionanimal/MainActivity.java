@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -82,8 +83,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoLayoutManager=new GridLayoutManager(this,2);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
-        infoAdapter=new MyPictureAdapter(animalInfo,animalList);
+        infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
+
+
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
         dogcatSp=(Spinner)findViewById(R.id.dogcatSp);

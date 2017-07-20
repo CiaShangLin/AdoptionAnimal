@@ -1,10 +1,12 @@
 package fcu.shang.adoptionanimal;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
 
@@ -17,15 +19,23 @@ import fcu.shang.adoptionanimal.Animal.AnimalInfo;
  * Created by SERS on 2017/7/14.
  */
 
-public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.ViewHolder>{
+public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.ViewHolder> implements View.OnClickListener{
 
+    private Context context;
     private ArrayList<Animal> animalList;
     private AnimalInfo animalInfo;
 
 
-    public MyPictureAdapter(AnimalInfo animalInfo,ArrayList<Animal> animalList) {       //之後應該會有其他建構直,用在篩選過後的
+    public MyPictureAdapter(Context context,AnimalInfo animalInfo, ArrayList<Animal> animalList) {       //之後應該會有其他建構直,用在篩選過後的
+        this.context=context;
         this.animalInfo=animalInfo;
         this.animalList=animalList;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int position=(int)v.getTag();
+        Toast.makeText(context,position+"",Toast.LENGTH_SHORT).show();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -46,17 +56,18 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
     public MyPictureAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview_layout,parent,false);
+        v.setOnClickListener(this);
         ViewHolder viewHolder=new ViewHolder(v);
+
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyPictureAdapter.ViewHolder holder, int position) {
         holder.mTextView.setText(animalList.get(position).getAnimal_kind());
-        //holder.mNetworkImageView.setImageUrl(animalList.get(position).getAlbum_file(),imageLoader);
         animalInfo.setImage(holder.mNetworkImageView,animalList.get(position));
 
-        //Log.d("mNetworkImageView",holder.mNetworkImageView.getHeight()+" "+holder.mNetworkImageView.getWidth());
+        holder.itemView.setTag(position);
     }
 
     @Override
