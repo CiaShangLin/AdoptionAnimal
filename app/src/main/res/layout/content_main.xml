@@ -19,14 +19,14 @@
         <Spinner
             android:id="@+id/adoptionSp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="4" />
+            android:layout_height="35dp"
+            android:layout_weight="1" />
 
         <Spinner
             android:id="@+id/dogcatSp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="6" />
+            android:layout_height="35dp"
+            android:layout_weight="1.5" />
 
     </LinearLayout>
 

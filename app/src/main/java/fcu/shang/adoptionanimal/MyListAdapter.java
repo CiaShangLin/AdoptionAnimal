@@ -32,7 +32,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView listBody,listSex,listShelter,listID;
+        public TextView listBody,listSex,listColor,listShelter,listID;
         public ImageView listImg;
         public LinearLayout listLayout;
 
@@ -40,6 +40,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
             super(v);
             listBody=(TextView)v.findViewById(R.id.listBody);
             listSex=(TextView)v.findViewById(R.id.listSex);
+            listColor=(TextView)v.findViewById(R.id.listColor);
             listImg=(ImageView)v.findViewById(R.id.listImg);
             listShelter=(TextView)v.findViewById(R.id.listShelter);
             listID=(TextView)v.findViewById(R.id.listID);
@@ -69,6 +70,8 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         }else{
             holder.listSex.setText(sex_female);
         }
+
+        holder.listColor.setText(animalList.get(position).getAnimal_colour());
 
         holder.listID.setText(String.valueOf(position+1)+".");
         holder.listShelter.setText(animalList.get(position).getShelter_name());
