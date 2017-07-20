@@ -12,7 +12,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="TextView"
-        android:textSize="35sp" />
+        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/dogcatImg"
