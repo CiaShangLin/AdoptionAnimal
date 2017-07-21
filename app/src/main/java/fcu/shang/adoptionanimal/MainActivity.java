@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
         infoRecylerView.setLayoutManager(infoLayoutManager);
-        
+
         infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
 
