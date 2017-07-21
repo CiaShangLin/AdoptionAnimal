@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             infoRecylerView.setLayoutManager(infoLayoutManager);
 
             //infoAdapter=new MyListAdapter(animalList,this);
-            infoAdapter=new MyFullIfoAdapter();
+            infoAdapter=new MyFullIfoAdapter(animalList,animalInfo);
             infoRecylerView.setAdapter(infoAdapter);
         }
 
