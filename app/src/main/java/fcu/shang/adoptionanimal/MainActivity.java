@@ -89,8 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
         infoRecylerView.setLayoutManager(infoLayoutManager);
-        //infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);  //FULL INFO
-
+        
         infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
 
@@ -151,14 +150,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void setPictureAdapter(){
         infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
         infoRecylerView.setLayoutManager(infoLayoutManager);
-        //infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);  //FULL INFO
-
-        infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
-        infoRecylerView.setAdapter(infoAdapter);
     }
 
     private void setListAdapter(){
-
+        infoLayoutManager=new LinearLayoutManager(this);
+        infoRecylerView.setLayoutManager(infoLayoutManager);
     }
 
     private void setFullAdapter(int position){
