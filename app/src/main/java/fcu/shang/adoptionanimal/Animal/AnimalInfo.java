@@ -58,6 +58,7 @@ public class AnimalInfo{
                 Bundle bundle=new Bundle();
                 bundle.putString(MainActivity.GSON,response.toString());
                 message.setData(bundle);
+
                 handler.sendMessage(message);
 
             }
@@ -72,8 +73,14 @@ public class AnimalInfo{
     }
 
     public void setImage(NetworkImageView networkImageView,Animal animal){
-
         networkImageView.setImageUrl(animal.getAlbum_file(),imageLoader);
+    }
+
+    public void opneFullInfo(int position){
+        Message message=new Message();
+        message.what=2;
+        message.arg1=position;
+        handler.sendMessage(message);
 
     }
 }

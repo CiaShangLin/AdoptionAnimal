@@ -3,6 +3,7 @@ package fcu.shang.adoptionanimal;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,10 +35,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ArrayList<Animal> animalList;                 //動物資訊的列表
     private String[] shelterName;                  //收容所的所有名稱
     private RecyclerView infoRecylerView;                 //主頁面的
-    private RecyclerView.Adapter infoAdapter;
+    private RecyclerView.Adapter infoAdapter , beforeAdapter=null;
     private RecyclerView.LayoutManager infoLayoutManager;
     private Spinner adoptionSp,dogcatSp;
     private AnimalInfo animalInfo;
+
 
      /*GIT 應該用SSH clone下來,才能在別台電腦上傳 大概吧
             或者是VCS->import into version control->create git repository*/
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     setShelterName();
                     initLayout();
                     break;
+                case 2:
+                    setFullAdapter(msg.arg1);
+                    break;
             }
         }
     };
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         inputData();
     }
@@ -141,11 +148,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     };
 
+    private void setPictureAdapter(){
+        infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
+        infoRecylerView.setLayoutManager(infoLayoutManager);
+        //infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);  //FULL INFO
+
+        infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
+        infoRecylerView.setAdapter(infoAdapter);
+    }
+
+    private void setListAdapter(){
+
+    }
+
+    private void setFullAdapter(int position){
+        adoptionSp.setVisibility(View.INVISIBLE);
+        dogcatSp.setVisibility(View.INVISIBLE);
+
+        infoLayoutManager=new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false);
+        infoRecylerView.setLayoutManager(infoLayoutManager);
+        infoAdapter=new MyFullIfoAdapter(animalList,animalInfo);
+        infoRecylerView.setAdapter(infoAdapter);
+        infoRecylerView.scrollToPosition(position);          //可以移動到position的位置
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        }else if(beforeAdapter==null){
+            setPictureAdapter();
         } else {
             super.onBackPressed();
         }
@@ -182,11 +215,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.menu_search) {
-            // Handle the camera action
+
         } else if (id == R.id.menu_doctors) {
 
         } else if (id == R.id.menu_lost) {
@@ -196,5 +229,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("START","START");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("START","onResume");
     }
 }

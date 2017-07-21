@@ -30,12 +30,14 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
         this.context=context;
         this.animalInfo=animalInfo;
         this.animalList=animalList;
+
     }
 
 
     @Override
     public void onClick(View v) {
         Toast.makeText(context,v.getTag()+"",Toast.LENGTH_SHORT).show();
+        animalInfo.opneFullInfo((int)v.getTag());
     }
 
 
@@ -67,7 +69,6 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
     public void onBindViewHolder(MyPictureAdapter.ViewHolder holder, int position) {
         holder.mTextView.setText(animalList.get(position).getAnimal_kind());
         animalInfo.setImage(holder.mNetworkImageView,animalList.get(position));
-
         holder.itemView.setTag(position);
     }
 
