@@ -36,6 +36,7 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
         public ViewHolder(View v) {
             super(v);
             networkImageView=(NetworkImageView)v.findViewById(R.id.fullImg);
+            networkImageView.setDefaultImageResId(R.drawable.failed_image);
             id=(TextView)v.findViewById(R.id.full_id);
             place=(TextView)v.findViewById(R.id.full_place);
             kind =(TextView)v.findViewById(R.id.full_kind);
