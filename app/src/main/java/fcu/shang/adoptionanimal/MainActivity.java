@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AnimalInfo animalInfo;
     private String dogcatPick="全部",adoptionPick="全部";
     private ArrayList<Animal> copyList;
-    int  beforeAdapter=1;
+    int  beforeAdapter=1,afterAdapter=1;
 
 
      /*GIT 應該用SSH clone下來,才能在別台電腦上傳 大概吧
@@ -197,20 +197,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return list;
     }
 
-    private void setPictureAdapter(ArrayList<Animal> animalList){ //圖片模式
+    private void setPictureAdapter(ArrayList<Animal> animalList){                        //圖片模式
         infoLayoutManager=new GridLayoutManager(this,2);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
         infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
+
+        beforeAdapter=1;
+        afterAdapter=1;
+
+
+        Log.d("beforeAdapter",""+beforeAdapter);
     }
 
     private void setListAdapter(ArrayList<Animal> animalList){                            //列表模式
         infoLayoutManager=new LinearLayoutManager(this);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
-        infoAdapter=new MyListAdapter(this,animalList);
+        infoAdapter=new MyListAdapter(this,animalInfo,animalList);
         infoRecylerView.setAdapter(infoAdapter);
+
+        beforeAdapter=2;
+        afterAdapter=2;
+        Log.d("beforeAdapter",""+beforeAdapter);
     }
 
     private void setFullAdapter(int position){
@@ -222,6 +232,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoAdapter=new MyFullIfoAdapter(animalList,animalInfo);
         infoRecylerView.setAdapter(infoAdapter);
         infoRecylerView.scrollToPosition(position);          //可以移動到position的位置
+        beforeAdapter=3;
+        Log.d("beforeAdapter",""+beforeAdapter);
     }
 
     @Override
@@ -229,8 +241,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(beforeAdapter==1){
-            //setPictureAdapter();
+        }else if(beforeAdapter==3){
+            Log.d("beforeAdapter_back",""+beforeAdapter);
+            if(afterAdapter==1){
+                setPictureAdapter(copyList);
+            }else{
+                setListAdapter(copyList);
+            }
         } else {
             super.onBackPressed();
         }
@@ -252,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         if(id == R.id.menu_search){
-
+            setListAdapter(copyList);
         }
 
         return super.onOptionsItemSelected(item);
@@ -265,6 +282,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.menu_search) {
+
 
         } else if (id == R.id.menu_doctors) {
 

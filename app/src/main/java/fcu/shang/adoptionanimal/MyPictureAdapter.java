@@ -36,7 +36,7 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(context,v.getTag()+"",Toast.LENGTH_SHORT).show();       //切換成有塞選的　會有問題
+        //Toast.makeText(context,v.getTag()+"",Toast.LENGTH_SHORT).show();       //切換成有塞選的　會有問題
         animalInfo.opneFullInfo(animalList.get((int)v.getTag()).getTag());
     }
 

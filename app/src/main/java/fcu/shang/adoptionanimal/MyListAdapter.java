@@ -2,6 +2,7 @@ package fcu.shang.adoptionanimal;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,23 +12,31 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import fcu.shang.adoptionanimal.Animal.Animal;
+import fcu.shang.adoptionanimal.Animal.AnimalInfo;
 
 /**
  * Created by SERS on 2017/7/17.
  */
 
-public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
+public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> implements View.OnClickListener{
 
     private ArrayList<Animal> animalList;
     private Context context;
+    private AnimalInfo animalInfo;
 
     String sex_male="♂",sex_female="♀";
 
-    public MyListAdapter(Context context,ArrayList<Animal> animalList){
+    public MyListAdapter(Context context,AnimalInfo animalInfo,ArrayList<Animal> animalList){
         this.animalList=animalList;
         this.context=context;
+        this.animalInfo=animalInfo;
     }
 
+    @Override
+    public void onClick(View v) {
+        Log.d("TAG",(int)v.getTag()+"");
+        animalInfo.opneFullInfo(animalList.get((int)v.getTag()).getTag());
+    }
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -51,12 +60,14 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     @Override
     public MyListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclist_layout,parent,false);
+        v.setOnClickListener(this);
         ViewHolder viewHolder=new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(MyListAdapter.ViewHolder holder, int position) {
+        holder.itemView.setTag(position);
         if(animalList.get(position).getAnimal_kind().equals("狗")){
             holder.listImg.setImageDrawable(context.getResources().getDrawable(R.drawable.dog));
         }else{
