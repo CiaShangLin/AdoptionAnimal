@@ -206,9 +206,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         beforeAdapter=1;
         afterAdapter=1;
-
-
-        Log.d("beforeAdapter",""+beforeAdapter);
     }
 
     private void setListAdapter(ArrayList<Animal> animalList){                            //列表模式
@@ -216,11 +213,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
         infoAdapter=new MyListAdapter(this,animalInfo,animalList);
-        infoRecylerView.setAdapter(infoAdapter);
+        //infoRecylerView.setAdapter(infoAdapter);
+        infoAdapter.notifyDataSetChanged();
 
         beforeAdapter=2;
         afterAdapter=2;
-        Log.d("beforeAdapter",""+beforeAdapter);
     }
 
     private void setFullAdapter(int position){
