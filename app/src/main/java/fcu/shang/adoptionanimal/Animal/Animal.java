@@ -36,7 +36,15 @@ public class Animal {
     private String cDate;                //異動時間
     private String shelter_address;        //地址
     private String shelter_tel;            //聯絡電話等欄位資訊
+    private int tag;
 
+    public int getTag() {
+        return tag;
+    }
+
+    public void setTag(int tag) {
+        this.tag = tag;
+    }
 
     public String getAnimal_place() {
         return animal_place;

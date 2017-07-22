@@ -23,7 +23,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     String sex_male="♂",sex_female="♀";
 
-    public MyListAdapter(ArrayList<Animal> animalList,Context context){
+    public MyListAdapter(Context context,ArrayList<Animal> animalList){
         this.animalList=animalList;
         this.context=context;
     }

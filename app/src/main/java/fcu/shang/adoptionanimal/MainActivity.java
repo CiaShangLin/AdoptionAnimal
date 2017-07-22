@@ -35,10 +35,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ArrayList<Animal> animalList;                 //動物資訊的列表
     private String[] shelterName;                  //收容所的所有名稱
     private RecyclerView infoRecylerView;                 //主頁面的
-    private RecyclerView.Adapter infoAdapter , beforeAdapter=null;
+    private RecyclerView.Adapter infoAdapter;
     private RecyclerView.LayoutManager infoLayoutManager;
     private Spinner adoptionSp,dogcatSp;
     private AnimalInfo animalInfo;
+    private String dogcatPick="全部",adoptionPick="全部";
+    private ArrayList<Animal> copyList;
+    int  beforeAdapter=1;
 
 
      /*GIT 應該用SSH clone下來,才能在別台電腦上傳 大概吧
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             switch (msg.what){
                 case 1:
                     animalList=animalInfo.getAnimalList();
+                    for(int i=0;i<animalList.size();i++)
+                        animalList.get(i).setTag(i);
                     setShelterName();
                     initLayout();
                     break;
@@ -64,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         inputData();
     }
@@ -86,12 +90,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         infoRecylerView=(RecyclerView)findViewById(R.id.infoRecyclerView);
         infoRecylerView.setHasFixedSize(true);
+        setPictureAdapter(animalList);
 
-        infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
-        infoRecylerView.setLayoutManager(infoLayoutManager);
-
-        infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
-        infoRecylerView.setAdapter(infoAdapter);
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
         dogcatSp=(Spinner)findViewById(R.id.dogcatSp);
@@ -126,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     AdapterView.OnItemSelectedListener adoptionSpListener=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            adoptionPick=shelterName[position];
+            copyList=pickAnimal(adoptionPick,dogcatPick);
+            if(beforeAdapter==1){
+                setPictureAdapter(copyList);
+            }else{
+                setListAdapter(copyList);
+            }
 
         }
 
@@ -138,7 +145,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     AdapterView.OnItemSelectedListener dogcatSpListener=new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+            String[] dogcatArray=getResources().getStringArray(R.array.animal);
+            dogcatPick=dogcatArray[position];
+            Log.d("DOGCAT",dogcatPick);
+            copyList=pickAnimal(adoptionPick,dogcatPick);
+            if(beforeAdapter==1){
+                setPictureAdapter(copyList);
+            }else{
+                setListAdapter(copyList);
+            }
         }
 
         @Override
@@ -147,14 +162,55 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     };
 
-    private void setPictureAdapter(){
-        infoLayoutManager=new GridLayoutManager(this,2);                                   //圖片模式
-        infoRecylerView.setLayoutManager(infoLayoutManager);
+    private ArrayList<Animal> pickAnimal(String adoptionPick,String dogcatPick){
+        if(adoptionPick.equals("全部") && dogcatPick.equals("全部")){
+            return animalList;
+        }else if(adoptionPick.equals("全部") && !dogcatPick.equals("全部")){
+            return search("",dogcatPick);
+        }else if(!adoptionPick.equals("全部") && dogcatPick.equals("全部")){
+            return search(adoptionPick,"");
+        }else{
+            return search(adoptionPick,dogcatPick);
+        }
     }
 
-    private void setListAdapter(){
+    private ArrayList<Animal> search(String adoptionPick,String dogcatPick){
+        ArrayList<Animal> list=new ArrayList<>();
+        if(adoptionPick.equals("")){                        //全部收容所   挑貓狗
+            for(int i=0;i<animalList.size();i++){
+                if(animalList.get(i).getAnimal_kind().equals(dogcatPick))
+                    list.add(animalList.get(i));
+            }
+        }else if(dogcatPick.equals("")){                      //全部貓狗   挑收容所
+            for(int i=0;i<animalList.size();i++){
+                if(animalList.get(i).getShelter_name().equals(adoptionPick))
+                    list.add(animalList.get(i));
+            }
+        }else{
+            for(int i=0;i<animalList.size();i++){
+                if(animalList.get(i).getAnimal_kind().equals(dogcatPick)
+                        && animalList.get(i).getShelter_name().equals(adoptionPick))
+                    list.add(animalList.get(i));
+            }
+        }
+
+        return list;
+    }
+
+    private void setPictureAdapter(ArrayList<Animal> animalList){ //圖片模式
+        infoLayoutManager=new GridLayoutManager(this,2);
+        infoRecylerView.setLayoutManager(infoLayoutManager);
+
+        infoAdapter=new MyPictureAdapter(this,animalInfo,animalList);
+        infoRecylerView.setAdapter(infoAdapter);
+    }
+
+    private void setListAdapter(ArrayList<Animal> animalList){                            //列表模式
         infoLayoutManager=new LinearLayoutManager(this);
         infoRecylerView.setLayoutManager(infoLayoutManager);
+
+        infoAdapter=new MyListAdapter(this,animalList);
+        infoRecylerView.setAdapter(infoAdapter);
     }
 
     private void setFullAdapter(int position){
@@ -173,8 +229,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(beforeAdapter==null){
-            setPictureAdapter();
+        }else if(beforeAdapter==1){
+            //setPictureAdapter();
         } else {
             super.onBackPressed();
         }
@@ -196,13 +252,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         if(id == R.id.menu_search){
-            //infoLayoutManager=new LinearLayoutManager(this);
-            infoLayoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-            infoRecylerView.setLayoutManager(infoLayoutManager);
 
-            //infoAdapter=new MyListAdapter(animalList,this);
-            infoAdapter=new MyFullIfoAdapter(animalList,animalInfo);
-            infoRecylerView.setAdapter(infoAdapter);
         }
 
         return super.onOptionsItemSelected(item);
