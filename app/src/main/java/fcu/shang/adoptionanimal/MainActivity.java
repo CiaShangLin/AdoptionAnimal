@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitle(R.string.toolbartitle);
         toolbar.setSubtitle(R.string.tootbarsubtitle);
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -213,14 +214,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
         infoAdapter=new MyListAdapter(this,animalInfo,animalList);
-        //infoRecylerView.setAdapter(infoAdapter);
-        infoAdapter.notifyDataSetChanged();
+        infoRecylerView.setAdapter(infoAdapter);
+        //infoAdapter.notifyDataSetChanged();
 
         beforeAdapter=2;
         afterAdapter=2;
     }
 
     private void setFullAdapter(int position){                        //全部資訊
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
         adoptionSp.setVisibility(View.INVISIBLE);
         dogcatSp.setVisibility(View.INVISIBLE);
 
@@ -241,8 +245,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if(beforeAdapter==3){
             Log.d("beforeAdapter_back",""+beforeAdapter);
             if(afterAdapter==1){
+                adoptionSp.setVisibility(View.VISIBLE);
+                dogcatSp.setVisibility(View.VISIBLE);
                 setPictureAdapter(copyList);
             }else{
+                adoptionSp.setVisibility(View.VISIBLE);
+                dogcatSp.setVisibility(View.VISIBLE);
                 setListAdapter(copyList);
             }
         } else {
@@ -262,11 +270,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if(id == R.id.menu_search){
-            setListAdapter(copyList);
+        switch (id){
+            case R.id.action_settings:
+                break;
+            case R.id.picture_mode:
+                if(item.getTitle().equals("圖片模式")){
+                    item.setTitle("列表模式");
+                    item.setIcon(R.drawable.list_mode);
+                    setListAdapter(copyList);
+                }else{
+                    item.setTitle("圖片模式");
+                    item.setIcon(R.drawable.picture_mode);
+                    setPictureAdapter(copyList);
+                }
+
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);

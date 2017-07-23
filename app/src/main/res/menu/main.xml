@@ -27,17 +27,8 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/picture_mode"
-        android:icon="@drawable/picture_mode"
+        android:icon="@drawable/list_mode"
         android:title="@string/picture_mode"
         app:showAsAction="always" />
-
-    <item
-        android:id="@+id/list_mode"
-        android:icon="@drawable/list_mode"
-        android:title="@string/list_mode"
-        app:showAsAction="always"/>
-
-
-
 
 </menu>
