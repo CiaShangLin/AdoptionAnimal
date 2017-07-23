@@ -214,7 +214,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
         infoAdapter=new MyListAdapter(this,animalInfo,animalList);
-        infoRecylerView.setAdapter(infoAdapter);
+        //infoRecylerView.setAdapter(infoAdapter);
+        infoRecylerView.notifyAll();
         //infoAdapter.notifyDataSetChanged();
 
         beforeAdapter=2;
@@ -222,8 +223,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setFullAdapter(int position){                        //全部資訊
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
         adoptionSp.setVisibility(View.INVISIBLE);
         dogcatSp.setVisibility(View.INVISIBLE);
@@ -234,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoRecylerView.setAdapter(infoAdapter);
         infoRecylerView.scrollToPosition(position);          //可以移動到position的位置
         beforeAdapter=3;
-        Log.d("beforeAdapter",""+beforeAdapter);
+
     }
 
     @Override
@@ -242,8 +241,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(beforeAdapter==3){
-            Log.d("beforeAdapter_back",""+beforeAdapter);
+        }else if(beforeAdapter==3){                                      //從FULLINFO切回來
             if(afterAdapter==1){
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
