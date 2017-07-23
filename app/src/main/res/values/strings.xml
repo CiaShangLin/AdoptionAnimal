@@ -8,6 +8,8 @@
 
     <string name="toolbartitle">領養動物</string>
     <string name="tootbarsubtitle">Animal adoption</string>
+    <string name="picture_mode">圖片模式</string>
+    <string name="list_mode">列表模式</string>
 
     <string-array name="animal">
         <item>全部</item>

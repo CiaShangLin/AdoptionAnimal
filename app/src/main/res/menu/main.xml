@@ -20,12 +20,24 @@
             app:showAsAction="never" />
     </group>
 
-
     <item
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_zoom_in_black_24dp"
         android:title="搜尋"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/picture_mode"
+        android:icon="@drawable/picture_mode"
+        android:title="@string/picture_mode"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/list_mode"
+        android:icon="@drawable/list_mode"
+        android:title="@string/list_mode"
+        app:showAsAction="always"/>
+
+
 
 
 </menu>

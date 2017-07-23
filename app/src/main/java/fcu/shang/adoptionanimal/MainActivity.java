@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         afterAdapter=2;
     }
 
-    private void setFullAdapter(int position){
+    private void setFullAdapter(int position){                        //全部資訊
         adoptionSp.setVisibility(View.INVISIBLE);
         dogcatSp.setVisibility(View.INVISIBLE);
 
