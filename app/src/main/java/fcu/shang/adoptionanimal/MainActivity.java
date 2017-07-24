@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -214,8 +215,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setListAdapter(ArrayList<Animal> animalList){                            //列表模式
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
         infoLayoutManager=new LinearLayoutManager(this);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
@@ -274,9 +274,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (id){
 
-            case android.R.id.home:
-                setPictureAdapter(copyList);
-                break;
             case R.id.picture_mode:
                 if(item.getTitle().equals("圖片模式")){
                     item.setTitle("列表模式");
@@ -286,11 +283,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     item.setTitle("圖片模式");
                     item.setIcon(R.drawable.picture_mode);
                     setPictureAdapter(copyList);
-                    getSupportActionBar().setHomeButtonEnabled(true);
                 }
-
                 break;
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -304,7 +298,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.menu_search) {
 
-
         } else if (id == R.id.menu_doctors) {
 
         } else if (id == R.id.menu_lost) {
@@ -315,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             email.putExtra(Intent.EXTRA_SUBJECT, "Youbike");
             email.putExtra(Intent.EXTRA_TEXT, "");
             startActivity(email);
-        }else if(id == R.id.menu_maker){
+        }else if(id == R.id.menu_maker) {
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("製作者")
                     .setMessage("姓名:蔡尚霖\n逢甲大學資工系三年級")
