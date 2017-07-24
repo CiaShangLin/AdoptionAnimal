@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     initLayout();
                     break;
                 case 2:
-                    setFullAdapter(msg.arg1);
+                    setFullAdapter(msg.arg1,copyList);
                     break;
             }
         }
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         afterAdapter=2;
     }
 
-    private void setFullAdapter(int position){                        //全部資訊
+    private void setFullAdapter(int position,ArrayList<Animal> animalList){                        //全部資訊
 
         adoptionSp.setVisibility(View.INVISIBLE);
         dogcatSp.setVisibility(View.INVISIBLE);
