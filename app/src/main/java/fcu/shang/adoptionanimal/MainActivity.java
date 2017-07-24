@@ -36,7 +36,9 @@ import fcu.shang.adoptionanimal.Animal.AnimalInfo;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+
     public static final String GSON="GSON";
+    private Toolbar toolbar;
     private ArrayList<Animal> animalList;                 //動物資訊的列表
     private String[] shelterName;                  //收容所的所有名稱
     private RecyclerView infoRecylerView;                 //主頁面的
@@ -79,11 +81,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void initLayout(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.toolbartitle);
         toolbar.setSubtitle(R.string.tootbarsubtitle);
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

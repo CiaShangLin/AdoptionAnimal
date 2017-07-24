@@ -26,7 +26,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="流水編號:"
@@ -48,7 +48,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="實際所在地:"
@@ -58,7 +58,6 @@
                     android:id="@+id/full_place"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.00"
                     android:gravity="center_vertical"
                     android:text="TextView"
                     android:textSize="20sp" />
@@ -71,7 +70,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="類型:"
@@ -94,7 +93,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="性別:"
@@ -117,7 +116,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="體型:"
@@ -140,7 +139,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="毛色:"
@@ -163,7 +162,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="年紀:"
@@ -186,7 +185,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="絕育:"
@@ -209,7 +208,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="狂犬病疫苗:"
@@ -232,7 +231,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="尋獲地:"
@@ -255,7 +254,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="狀態:"
@@ -278,7 +277,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="資料備註:"
@@ -301,7 +300,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="認養時間(起):"
@@ -325,7 +324,7 @@
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="認養時間(迄):"
@@ -348,7 +347,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="資料異動時間:"
@@ -370,7 +369,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="資料建立時間"
@@ -393,7 +392,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="收容所名稱:"
@@ -416,7 +415,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="異動時間:"
@@ -439,7 +438,7 @@
 
                 <TextView
                     android:layout_width="135dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="聯絡電話:"
