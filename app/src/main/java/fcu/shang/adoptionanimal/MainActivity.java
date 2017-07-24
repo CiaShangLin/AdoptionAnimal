@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setShelterName(){                             //取出所有收容所名稱,且不重複
-
         HashSet shelterSet=new HashSet();
         for(int i=0;i<animalList.size();i++){
             shelterSet.add(animalList.get(i).getShelter_name());
@@ -138,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }else{
                 setListAdapter(copyList);
             }
-
         }
 
         @Override

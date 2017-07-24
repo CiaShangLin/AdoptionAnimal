@@ -25,13 +25,12 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
     private Context context;
     private ArrayList<Animal> animalList;
     private AnimalInfo animalInfo;
-
+    private String sex_male="♂",sex_female="♀";
 
     public MyPictureAdapter(Context context,AnimalInfo animalInfo, ArrayList<Animal> animalList) {       //之後應該會有其他建構直,用在篩選過後的
         this.context=context;
         this.animalInfo=animalInfo;
         this.animalList=animalList;
-
     }
 
 
@@ -71,18 +70,31 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
 
     @Override
     public void onBindViewHolder(MyPictureAdapter.ViewHolder holder, int position) {
-        holder.info_bodytype.setText(animalList.get(position).getAnimal_bodytype());
-        if(animalList.get(position).getAnimal_bodytype().equals("")){
-            
+
+        if(animalList.get(position).getAnimal_bodytype().equals("BIG")){
+            holder.info_bodytype.setText("大型");
+        }else if(animalList.get(position).getAnimal_bodytype().equals("MINI")){
+            holder.info_bodytype.setText("迷你");
+        }else if (animalList.get(position).getAnimal_bodytype().equals("MEDIUM")){
+            holder.info_bodytype.setText("中型");
+        }else if(animalList.get(position).getAnimal_bodytype().equals("SMALL")){
+            holder.info_bodytype.setText("小型");
         }
+
         if(animalList.get(position).getAnimal_kind().equals("狗")){
-
+            holder.info_type.setImageDrawable(context.getResources().getDrawable(R.drawable.dog));
         }else{
-
+            holder.info_type.setImageDrawable(context.getResources().getDrawable(R.drawable.cat));
         }
-        holder.info_type.setImageDrawable(context.getResources().getDrawable(R.drawable.cat));
+
+        if(animalList.get(position).getAnimal_sex().equals("M")){
+            holder.info_sex.setText(sex_male);
+        }else{
+            holder.info_sex.setText(sex_female);
+        }
+
         animalInfo.setImage(holder.mNetworkImageView,animalList.get(position));
-        holder.itemView.setTag(position);
+        holder.itemView.setTag(position);           //設置TAG用
     }
 
     @Override

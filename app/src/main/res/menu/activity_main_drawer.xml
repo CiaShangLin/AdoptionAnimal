@@ -24,7 +24,8 @@
             <item
                 android:id="@+id/menu_email"
                 android:icon="@drawable/gmail"
-                android:title="聯絡方法" />
+                android:title="聯絡方法"
+                android:visible="false" />
             <item
                 android:id="@+id/menu_maker"
                 android:icon="@drawable/maker"
