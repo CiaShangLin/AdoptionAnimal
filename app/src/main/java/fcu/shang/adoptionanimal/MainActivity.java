@@ -1,8 +1,12 @@
 package fcu.shang.adoptionanimal;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -302,6 +306,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.menu_lost) {
 
+        }else if(id == R.id.menu_email){
+            Intent email=new Intent(Intent.ACTION_SENDTO);
+            email.setData(Uri.parse("mailto:west7418@gmail.com"));
+            email.putExtra(Intent.EXTRA_SUBJECT, "Youbike");
+            email.putExtra(Intent.EXTRA_TEXT, "");
+            startActivity(email);
+        }else if(id == R.id.menu_maker){
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("製作者")
+                    .setMessage("姓名:蔡尚霖\n逢甲大學資工系三年級")
+                    .setNegativeButton("關閉", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

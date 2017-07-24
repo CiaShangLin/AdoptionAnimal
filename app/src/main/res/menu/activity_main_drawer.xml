@@ -23,11 +23,11 @@
         <menu>
             <item
                 android:id="@+id/menu_email"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/gmail"
                 android:title="聯絡方法" />
             <item
                 android:id="@+id/menu_maker"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/maker"
                 android:title="製作者" />
         </menu>
     </item>

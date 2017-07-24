@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,11 +44,14 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTextView;
+        public TextView info_sex,info_bodytype;
+        public ImageView info_type;
         public NetworkImageView mNetworkImageView;
         public ViewHolder(View v) {
             super(v);
-            mTextView = (TextView)v.findViewById(R.id.info_text);
+            info_sex = (TextView)v.findViewById(R.id.info_sex);
+            info_bodytype= (TextView)v.findViewById(R.id.info_bodytype);
+            info_type=(ImageView)v.findViewById(R.id.info_type);
 
             mNetworkImageView=(NetworkImageView)v.findViewById(R.id.img);
             mNetworkImageView.setDefaultImageResId(R.drawable.animal);
@@ -67,7 +71,16 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
 
     @Override
     public void onBindViewHolder(MyPictureAdapter.ViewHolder holder, int position) {
-        holder.mTextView.setText(animalList.get(position).getAnimal_kind());
+        holder.info_bodytype.setText(animalList.get(position).getAnimal_bodytype());
+        if(animalList.get(position).getAnimal_bodytype().equals("")){
+            
+        }
+        if(animalList.get(position).getAnimal_kind().equals("狗")){
+
+        }else{
+
+        }
+        holder.info_type.setImageDrawable(context.getResources().getDrawable(R.drawable.cat));
         animalInfo.setImage(holder.mNetworkImageView,animalList.get(position));
         holder.itemView.setTag(position);
     }
