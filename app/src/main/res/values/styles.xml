@@ -17,19 +17,4 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="fullTv">
-        <item name="android:layout_width">135dp</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_weight">0</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
-
-    <style name="fullTv2">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_weight">0</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
 </resources>

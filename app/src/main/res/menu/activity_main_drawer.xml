@@ -13,7 +13,7 @@
 
         <item
             android:id="@+id/menu_lost"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/gmail"
             android:title="寵物遺失">
         </item>
 
@@ -24,8 +24,7 @@
             <item
                 android:id="@+id/menu_email"
                 android:icon="@drawable/gmail"
-                android:title="聯絡方法"
-                android:visible="false" />
+                android:title="聯絡方法" />
             <item
                 android:id="@+id/menu_maker"
                 android:icon="@drawable/maker"

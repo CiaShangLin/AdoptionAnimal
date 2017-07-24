@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.toolbartitle);
         toolbar.setSubtitle(R.string.tootbarsubtitle);
+        getSupportActionBar().setHomeButtonEnabled(true);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);  //使用它可以設置不同顏色的導航導航圖標。
 
         infoRecylerView=(RecyclerView)findViewById(R.id.infoRecyclerView);
         infoRecylerView.setHasFixedSize(true);
