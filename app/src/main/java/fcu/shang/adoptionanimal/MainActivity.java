@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.toolbartitle);
         toolbar.setSubtitle(R.string.tootbarsubtitle);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -214,13 +214,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setListAdapter(ArrayList<Animal> animalList){                            //列表模式
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         infoLayoutManager=new LinearLayoutManager(this);
         infoRecylerView.setLayoutManager(infoLayoutManager);
 
         infoAdapter=new MyListAdapter(this,animalInfo,animalList);
-        //infoRecylerView.setAdapter(infoAdapter);
-        infoRecylerView.notifyAll();
-        //infoAdapter.notifyDataSetChanged();
+        infoRecylerView.setAdapter(infoAdapter);
 
         beforeAdapter=2;
         afterAdapter=2;
@@ -273,7 +273,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         switch (id){
-            case R.id.action_settings:
+
+            case android.R.id.home:
+                setPictureAdapter(copyList);
                 break;
             case R.id.picture_mode:
                 if(item.getTitle().equals("圖片模式")){
@@ -284,6 +286,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     item.setTitle("圖片模式");
                     item.setIcon(R.drawable.picture_mode);
                     setPictureAdapter(copyList);
+                    getSupportActionBar().setHomeButtonEnabled(true);
                 }
 
                 break;

@@ -68,13 +68,22 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     @Override
     public void onBindViewHolder(MyListAdapter.ViewHolder holder, int position) {
         holder.itemView.setTag(position);
+
         if(animalList.get(position).getAnimal_kind().equals("狗")){
             holder.listImg.setImageDrawable(context.getResources().getDrawable(R.drawable.dog));
         }else{
             holder.listImg.setImageDrawable(context.getResources().getDrawable(R.drawable.cat));
         }
 
-        holder.listBody.setText(animalList.get(position).getAnimal_bodytype());
+        if(animalList.get(position).getAnimal_bodytype().equals("BIG")){
+            holder.listBody.setText("大型");
+        }else if(animalList.get(position).getAnimal_bodytype().equals("MINI")){
+            holder.listBody.setText("迷你");
+        }else if (animalList.get(position).getAnimal_bodytype().equals("MEDIUM")){
+            holder.listBody.setText("中型");
+        }else if(animalList.get(position).getAnimal_bodytype().equals("SMALL")){
+            holder.listBody.setText("小型");
+        }
 
         if(animalList.get(position).getAnimal_sex().equals("M")){
             holder.listSex.setText(sex_male);
@@ -83,7 +92,6 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         }
 
         holder.listColor.setText(animalList.get(position).getAnimal_colour());
-
         holder.listID.setText(String.valueOf(position+1)+".");
         holder.listShelter.setText(animalList.get(position).getShelter_name());
 
