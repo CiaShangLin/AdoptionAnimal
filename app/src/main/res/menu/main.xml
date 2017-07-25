@@ -11,7 +11,18 @@
         android:id="@+id/picture_mode"
         android:icon="@drawable/list_mode"
         android:title="@string/picture_mode"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
+    <item
+        android:title="FB分享"
+        android:id="@+id/menu_fb"
+        android:icon="@drawable/facebook"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:title="加入追蹤"
+        android:id="@+id/menu_track"
+        android:icon="@drawable/off_track"
+        android:visible="false"
+        app:showAsAction="always" />
 
 </menu>

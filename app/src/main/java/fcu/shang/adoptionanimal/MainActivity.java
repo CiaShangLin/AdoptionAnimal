@@ -66,8 +66,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     setShelterName();
                     initLayout();
                     break;
-                case 2:
-                    toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);
+                case 2:                                 //FULLINFO模式
+                    toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);        //搜尋
+                    toolbar.getMenu().findItem(R.id.picture_mode).setVisible(false);       //圖片模式
+                    toolbar.getMenu().findItem(R.id.menu_fb).setVisible(true);            //FB
+                    toolbar.getMenu().findItem(R.id.menu_track).setVisible(true);          //追蹤
                     setFullAdapter(msg.arg1,copyList);
                     break;
             }
@@ -172,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     };
 
-    private ArrayList<Animal> pickAnimal(String adoptionPick,String dogcatPick){
+    private ArrayList<Animal> pickAnimal(String adoptionPick,String dogcatPick){          //Spinner篩選功能
         if(adoptionPick.equals("全部") && dogcatPick.equals("全部")){
             return animalList;
         }else if(adoptionPick.equals("全部") && !dogcatPick.equals("全部")){
@@ -250,11 +253,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }else if(beforeAdapter==3){                                      //從FULLINFO切回來
-            if(afterAdapter==1){
+            toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);        //搜尋
+            toolbar.getMenu().findItem(R.id.picture_mode).setVisible(true);       //圖片模式
+            toolbar.getMenu().findItem(R.id.menu_fb).setVisible(false);            //FB
+            toolbar.getMenu().findItem(R.id.menu_track).setVisible(false);          //追蹤
+            if(afterAdapter==1){                                        //從FULL切回圖片模式
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
                 setPictureAdapter(copyList);
-            }else{
+            }else{                                                     //從FULL切回列表模式
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
                 setListAdapter(copyList);
@@ -328,15 +335,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("START","START");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("START","onResume");
-    }
 }
