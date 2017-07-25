@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.InvalidPropertiesFormatException;
 import java.util.Iterator;
 
 import fcu.shang.adoptionanimal.Animal.Animal;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     initLayout();
                     break;
                 case 2:
+                    toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);
                     setFullAdapter(msg.arg1,copyList);
                     break;
             }
@@ -111,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dogcatSp.setOnItemSelectedListener(dogcatSpListener);
 
     }
+
 
     private void inputData(){                         //取得所有動物資訊列表
         animalInfo=new AnimalInfo(handler,MainActivity.this);
@@ -263,7 +266,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }

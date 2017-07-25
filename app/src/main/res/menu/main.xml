@@ -11,6 +11,7 @@
         android:id="@+id/picture_mode"
         android:icon="@drawable/list_mode"
         android:title="@string/picture_mode"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        />
 
 </menu>
