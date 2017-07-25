@@ -16,4 +16,7 @@
         <item>狗</item>
         <item>貓</item>
     </string-array>
+
+    <string-array name="shelter_url"></string-array>
+
 </resources>
