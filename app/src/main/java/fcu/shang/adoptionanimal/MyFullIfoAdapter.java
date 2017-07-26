@@ -91,7 +91,6 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
                     Log.d("Shared_off",id);
                 }else{
                     holder.full_track.setImageResource(R.drawable.off_track);
-
                     editor.remove(id).commit();
                     Log.d("Shared_on",id);
                 }

@@ -20,4 +20,5 @@
 
     <string-array name="shelter_url"></string-array>
 
+    <string name="facebook_app_id">320444858396944</string>
 </resources>

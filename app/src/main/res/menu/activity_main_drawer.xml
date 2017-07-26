@@ -17,6 +17,12 @@
             android:title="寵物遺失">
         </item>
 
+        <item
+            android:id="@+id/menu_track"
+            android:icon="@drawable/on_track"
+            android:title="關注寵物">
+        </item>
+
     </group>
 
     <item android:title="Communicate">
