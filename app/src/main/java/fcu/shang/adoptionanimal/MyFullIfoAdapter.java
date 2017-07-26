@@ -1,7 +1,13 @@
 package fcu.shang.adoptionanimal;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +18,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareHashtag;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 
 import java.util.ArrayList;
 
 import fcu.shang.adoptionanimal.Animal.Animal;
 import fcu.shang.adoptionanimal.Animal.AnimalInfo;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * Created by Shang on 2017/7/20.
@@ -29,7 +43,8 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
 
-    public MyFullIfoAdapter(ArrayList<Animal> animalList,AnimalInfo animalInfo,SharedPreferences sp) {
+
+    public MyFullIfoAdapter(ArrayList<Animal> animalList, AnimalInfo animalInfo, SharedPreferences sp) {
         this.animalList=animalList;
         this.animalInfo=animalInfo;
         this.sp=sp;
@@ -108,6 +123,7 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
         holder.full_facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("FACEBOOK","TEST");
 
             }
         });

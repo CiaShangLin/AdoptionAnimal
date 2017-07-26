@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,11 +34,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.InvalidPropertiesFormatException;
 import java.util.Iterator;
 
 import fcu.shang.adoptionanimal.Animal.Animal;
@@ -73,13 +80,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     initLayout();
                     break;
                 case 2:                                 //FULLINFO模式
-
                     toolbar.setSubtitle(null);
                     toolbar.setTitle(R.string.full_info);
                     toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);
                     toolbar.getMenu().findItem(R.id.picture_mode).setVisible(false);
                     setFullAdapter(msg.arg1,copyList);
                     break;
+                case 3:
+
+                    break;
+
             }
         }
     };
@@ -120,8 +130,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dogcatSp.setAdapter(new MydogcatSpAdapter(this,getResources().getStringArray(R.array.animal)));
         dogcatSp.setOnItemSelectedListener(dogcatSpListener);
 
-        sp=getSharedPreferences(FAVORITE,MODE_PRIVATE);
-
+        sp=getSharedPreferences(FAVORITE,MODE_PRIVATE);     //初始化資料庫
+        FacebookSdk.sdkInitialize(getApplicationContext());          //初始化 FB SDK
     }
 
 
@@ -260,7 +270,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         switch (id){
-
+            case R.id.menu_search:
+                break;
             case R.id.picture_mode:
                 if(item.getTitle().equals("圖片模式")){
                     item.setTitle("列表模式");
@@ -282,10 +293,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-
-        if (id == R.id.menu_search) {
-
-        } else if (id == R.id.menu_doctors) {
+        if (id == R.id.menu_doctors) {
 
         } else if (id == R.id.menu_lost) {
 
@@ -328,5 +336,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
     }
+
 
 }
