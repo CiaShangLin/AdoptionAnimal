@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -30,11 +31,14 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        public ImageButton full_img,full_facebook;
         public TextView id,place,kind,sex,bodytype,colour,age,sterilization,bacterin,foundplace,status,remark,opendata,closedata,update,createtime,shelterName,cDate,tel;
         public NetworkImageView networkImageView;
 
         public ViewHolder(View v) {
             super(v);
+            full_img=(ImageButton)v.findViewById(R.id.full_track);
+            full_facebook=(ImageButton)v.findViewById(R.id.full_facebook);
             networkImageView=(NetworkImageView)v.findViewById(R.id.fullImg);
             networkImageView.setDefaultImageResId(R.drawable.failed_image);
             id=(TextView)v.findViewById(R.id.full_id);

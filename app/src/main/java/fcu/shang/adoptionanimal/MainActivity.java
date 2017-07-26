@@ -67,10 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     initLayout();
                     break;
                 case 2:                                 //FULLINFO模式
-                    toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);        //搜尋
-                    toolbar.getMenu().findItem(R.id.picture_mode).setVisible(false);       //圖片模式
-                    toolbar.getMenu().findItem(R.id.menu_fb).setVisible(true);            //FB
-                    toolbar.getMenu().findItem(R.id.menu_track).setVisible(true);          //追蹤
+                    //toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);        //搜尋
+                    //toolbar.getMenu().findItem(R.id.picture_mode).setVisible(false);       //圖片模式
+                    toolbar.setVisibility(View.INVISIBLE);
                     setFullAdapter(msg.arg1,copyList);
                     break;
             }
@@ -252,16 +251,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(beforeAdapter==3){                                      //從FULLINFO切回來
-            toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);        //搜尋
-            toolbar.getMenu().findItem(R.id.picture_mode).setVisible(true);       //圖片模式
-            toolbar.getMenu().findItem(R.id.menu_fb).setVisible(false);            //FB
-            toolbar.getMenu().findItem(R.id.menu_track).setVisible(false);          //追蹤
-            if(afterAdapter==1){                                        //從FULL切回圖片模式
+        }else if(beforeAdapter==3){                                               //從FULLINFO切回來
+            //toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);        //搜尋
+            //toolbar.getMenu().findItem(R.id.picture_mode).setVisible(true);       //圖片模式
+            toolbar.setVisibility(View.VISIBLE);
+            if(afterAdapter==1){                                                  //從FULL切回圖片模式
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
                 setPictureAdapter(copyList);
-            }else{                                                     //從FULL切回列表模式
+            }else{                                                               //從FULL切回列表模式
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
                 setListAdapter(copyList);

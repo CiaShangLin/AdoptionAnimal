@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,10 +15,42 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/fullImg"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                android:layout_height="match_parent">
+
+                <com.android.volley.toolbox.NetworkImageView
+                    android:id="@+id/fullImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <ImageButton
+                    android:id="@+id/full_track"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="48dp"
+                    android:layout_weight="0.07"
+                    android:background="@null"
+                    android:elevation="0dp"
+                    app:srcCompat="@drawable/off_track" />
+
+                <ImageButton
+                    android:id="@+id/full_facebook"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.12"
+                    android:background="@null"
+                    android:elevation="0dp"
+                    app:srcCompat="@drawable/facebook" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -457,5 +490,10 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
 
 </LinearLayout>
