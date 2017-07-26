@@ -10,6 +10,7 @@
     <string name="tootbarsubtitle">Animal adoption</string>
     <string name="picture_mode">圖片模式</string>
     <string name="list_mode">列表模式</string>
+    <string name="full_info">完整資訊</string>
 
     <string-array name="animal">
         <item>全部</item>

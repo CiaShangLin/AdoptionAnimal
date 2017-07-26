@@ -2,6 +2,7 @@ package fcu.shang.adoptionanimal;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,10 +39,10 @@ import fcu.shang.adoptionanimal.Animal.AnimalInfo;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    public static final String FAVORITE="FAVORITE";
     public static final String GSON="GSON";
     private Toolbar toolbar;
-    private ArrayList<Animal> animalList;                 //動物資訊的列表
-    private String[] shelterName;                  //收容所的所有名稱
+    private String[] shelterName;                         //收容所的所有名稱
     private RecyclerView infoRecylerView;                 //主頁面的
     private RecyclerView.Adapter infoAdapter;
     private RecyclerView.LayoutManager infoLayoutManager;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String dogcatPick="全部",adoptionPick="全部";
     private ArrayList<Animal> copyList;
     int  beforeAdapter=1,afterAdapter=1;
+    private SharedPreferences sp;
+
 
 
      /*GIT 應該用SSH clone下來,才能在別台電腦上傳 大概吧
@@ -60,16 +63,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 1:
-                    animalList=animalInfo.getAnimalList();
-                    for(int i=0;i<animalList.size();i++)
-                        animalList.get(i).setTag(i);
                     setShelterName();
                     initLayout();
                     break;
                 case 2:                                 //FULLINFO模式
-                    //toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);        //搜尋
-                    //toolbar.getMenu().findItem(R.id.picture_mode).setVisible(false);       //圖片模式
-                    toolbar.setVisibility(View.INVISIBLE);
+
+                    toolbar.setSubtitle(null);
+                    toolbar.setTitle(R.string.full_info);
+                    toolbar.getMenu().findItem(R.id.menu_search).setVisible(false);
+                    toolbar.getMenu().findItem(R.id.picture_mode).setVisible(false);
                     setFullAdapter(msg.arg1,copyList);
                     break;
             }
@@ -90,7 +92,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitle(R.string.toolbartitle);
         toolbar.setSubtitle(R.string.tootbarsubtitle);
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -99,12 +100,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setItemIconTintList(null);  //使用它可以設置不同顏色的導航導航圖標。
+        navigationView.setItemIconTintList(null);            //使用它可以設置不同顏色的導航導航圖標。
 
         infoRecylerView=(RecyclerView)findViewById(R.id.infoRecyclerView);
         infoRecylerView.setHasFixedSize(true);
-        setPictureAdapter(animalList);
-
+        setPictureAdapter(animalInfo.getAnimalList());
 
         adoptionSp=(Spinner)findViewById(R.id.adoptionSp);
         dogcatSp=(Spinner)findViewById(R.id.dogcatSp);
@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adoptionSp.setOnItemSelectedListener(adoptionSpListener);
         dogcatSp.setAdapter(new MydogcatSpAdapter(this,getResources().getStringArray(R.array.animal)));
         dogcatSp.setOnItemSelectedListener(dogcatSpListener);
+
+        sp=getSharedPreferences(FAVORITE,MODE_PRIVATE);
 
     }
 
@@ -124,8 +126,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void setShelterName(){                             //取出所有收容所名稱,且不重複
         HashSet shelterSet=new HashSet();
-        for(int i=0;i<animalList.size();i++){
-            shelterSet.add(animalList.get(i).getShelter_name());
+        for(int i=0;i<animalInfo.getAnimalList().size();i++){
+            shelterSet.add(animalInfo.getAnimalList().get(i).getShelter_name());
         }
         int count=1;
         shelterName=new String[shelterSet.size()+1];
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             adoptionPick=shelterName[position];
-            copyList=pickAnimal(adoptionPick,dogcatPick);
+            copyList=animalInfo.pickAnimal(adoptionPick,dogcatPick);
             if(beforeAdapter==1){
                 setPictureAdapter(copyList);
             }else{
@@ -159,8 +161,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             String[] dogcatArray=getResources().getStringArray(R.array.animal);
             dogcatPick=dogcatArray[position];
-            Log.d("DOGCAT",dogcatPick);
-            copyList=pickAnimal(adoptionPick,dogcatPick);
+
+            copyList=animalInfo.pickAnimal(adoptionPick,dogcatPick);
             if(beforeAdapter==1){
                 setPictureAdapter(copyList);
             }else{
@@ -174,40 +176,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     };
 
-    private ArrayList<Animal> pickAnimal(String adoptionPick,String dogcatPick){          //Spinner篩選功能
-        if(adoptionPick.equals("全部") && dogcatPick.equals("全部")){
-            return animalList;
-        }else if(adoptionPick.equals("全部") && !dogcatPick.equals("全部")){
-            return search("",dogcatPick);
-        }else if(!adoptionPick.equals("全部") && dogcatPick.equals("全部")){
-            return search(adoptionPick,"");
-        }else{
-            return search(adoptionPick,dogcatPick);
-        }
-    }
 
-    private ArrayList<Animal> search(String adoptionPick,String dogcatPick){
-        ArrayList<Animal> list=new ArrayList<>();
-        if(adoptionPick.equals("")){                        //全部收容所   挑貓狗
-            for(int i=0;i<animalList.size();i++){
-                if(animalList.get(i).getAnimal_kind().equals(dogcatPick))
-                    list.add(animalList.get(i));
-            }
-        }else if(dogcatPick.equals("")){                      //全部貓狗   挑收容所
-            for(int i=0;i<animalList.size();i++){
-                if(animalList.get(i).getShelter_name().equals(adoptionPick))
-                    list.add(animalList.get(i));
-            }
-        }else{
-            for(int i=0;i<animalList.size();i++){
-                if(animalList.get(i).getAnimal_kind().equals(dogcatPick)
-                        && animalList.get(i).getShelter_name().equals(adoptionPick))
-                    list.add(animalList.get(i));
-            }
-        }
-
-        return list;
-    }
 
     private void setPictureAdapter(ArrayList<Animal> animalList){                        //圖片模式
         infoLayoutManager=new GridLayoutManager(this,2);
@@ -234,12 +203,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void setFullAdapter(int position,ArrayList<Animal> animalList){                        //全部資訊
 
-        adoptionSp.setVisibility(View.INVISIBLE);
-        dogcatSp.setVisibility(View.INVISIBLE);
+        adoptionSp.setVisibility(View.GONE);
+        dogcatSp.setVisibility(View.GONE);
 
         infoLayoutManager=new LinearLayoutManager(MainActivity.this,LinearLayoutManager.HORIZONTAL,false);
         infoRecylerView.setLayoutManager(infoLayoutManager);
-        infoAdapter=new MyFullIfoAdapter(animalList,animalInfo);
+
+        infoAdapter=new MyFullIfoAdapter(animalList,animalInfo,sp);
         infoRecylerView.setAdapter(infoAdapter);
         infoRecylerView.scrollToPosition(position);          //可以移動到position的位置
         beforeAdapter=3;
@@ -252,9 +222,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }else if(beforeAdapter==3){                                               //從FULLINFO切回來
-            //toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);        //搜尋
-            //toolbar.getMenu().findItem(R.id.picture_mode).setVisible(true);       //圖片模式
+            toolbar.setSubtitle(R.string.tootbarsubtitle);
+            toolbar.setTitle(R.string.toolbartitle);
+            toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);
+            toolbar.getMenu().findItem(R.id.picture_mode).setVisible(true);
             toolbar.setVisibility(View.VISIBLE);
+
             if(afterAdapter==1){                                                  //從FULL切回圖片模式
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
@@ -319,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if(id == R.id.menu_maker) {
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle("製作者")
-                    .setMessage("姓名:蔡尚霖\n逢甲大學資工系三年級")
+                    .setMessage("逢甲大學資工系三年級")
                     .setNegativeButton("關閉", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

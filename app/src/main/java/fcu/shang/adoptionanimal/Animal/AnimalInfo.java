@@ -43,8 +43,7 @@ public class AnimalInfo{
         return animalList;
     }
 
-
-    public void getInfo(){
+    public void getInfo(){                      //解析資料
         StringRequest stringRequest=new StringRequest(url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -52,13 +51,11 @@ public class AnimalInfo{
                 Gson gson=new Gson();                        //變數可以缺少,不一定都要有
                 Type arrayAnimal=new TypeToken<List<Animal>>(){}.getType();
                 animalList=gson.fromJson(response,arrayAnimal);
+                for(int i=0;i<animalList.size();i++)
+                    animalList.get(i).setTag(i);
 
                 Message message=new Message();
                 message.what=1;
-                Bundle bundle=new Bundle();
-                bundle.putString(MainActivity.GSON,response.toString());
-                message.setData(bundle);
-
                 handler.sendMessage(message);
 
             }
@@ -72,15 +69,49 @@ public class AnimalInfo{
         requestQueue.add(stringRequest);
     }
 
-    public void setImage(NetworkImageView networkImageView,Animal animal){
+    public void setImage(NetworkImageView networkImageView,Animal animal){   //設置圖片模式的圖片
         networkImageView.setImageUrl(animal.getAlbum_file(),imageLoader);
     }
 
-    public void opneFullInfo(int position){
+    public void opneFullInfo(int position){            //切換到FULL INFO
         Message message=new Message();
         message.what=2;
         message.arg1=position;
         handler.sendMessage(message);
-
     }
+
+    public ArrayList<Animal> pickAnimal(String adoptionPick,String dogcatPick){          //Spinner篩選功能
+        if(adoptionPick.equals("全部") && dogcatPick.equals("全部")){
+            return animalList;
+        }else if(adoptionPick.equals("全部") && !dogcatPick.equals("全部")){
+            return search("",dogcatPick);
+        }else if(!adoptionPick.equals("全部") && dogcatPick.equals("全部")){
+            return search(adoptionPick,"");
+        }else{
+            return search(adoptionPick,dogcatPick);
+        }
+    }
+
+    private ArrayList<Animal> search(String adoptionPick,String dogcatPick){
+        ArrayList<Animal> list=new ArrayList<>();
+        if(adoptionPick.equals("")){                        //全部收容所   挑貓狗
+            for(int i=0;i<animalList.size();i++){
+                if(animalList.get(i).getAnimal_kind().equals(dogcatPick))
+                    list.add(animalList.get(i));
+            }
+        }else if(dogcatPick.equals("")){                      //全部貓狗   挑收容所
+            for(int i=0;i<animalList.size();i++){
+                if(animalList.get(i).getShelter_name().equals(adoptionPick))
+                    list.add(animalList.get(i));
+            }
+        }else{
+            for(int i=0;i<animalList.size();i++){             //兩個皆有篩選
+                if(animalList.get(i).getAnimal_kind().equals(dogcatPick)
+                        && animalList.get(i).getShelter_name().equals(adoptionPick))
+                    list.add(animalList.get(i));
+            }
+        }
+        return list;
+    }
+
 }
