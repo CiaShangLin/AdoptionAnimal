@@ -1,6 +1,9 @@
 package fcu.shang.adoptionanimal.Animal;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,7 +19,11 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,4 +121,39 @@ public class AnimalInfo{
         return list;
     }
 
+    public void sharePhoto(Animal animal){
+        DownloadImgTask downloadImgTask=new DownloadImgTask();
+        downloadImgTask.execute(animal.getAlbum_file());
+    }
+
+
+    class DownloadImgTask extends AsyncTask<String,Void,Bitmap> {
+        @Override
+        protected Bitmap doInBackground(String... params) {
+
+            String url=params[0];
+            Bitmap bitmap=null;
+            try{
+                InputStream inputStream=new URL(url).openStream();
+                bitmap= BitmapFactory.decodeStream(inputStream);
+            }catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            Message message=new Message();
+            message.what=3;
+            message.obj=bitmap;
+            handler.sendMessage(message);
+        }
+    }
+
 }
+

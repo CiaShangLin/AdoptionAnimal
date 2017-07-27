@@ -123,8 +123,8 @@ public class MyFullIfoAdapter extends RecyclerView.Adapter<MyFullIfoAdapter.View
         holder.full_facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("FACEBOOK","TEST");
-
+                Log.d("FACEBOOK","SharePhoto");
+                animalInfo.sharePhoto(animalList.get(position));
             }
         });
 

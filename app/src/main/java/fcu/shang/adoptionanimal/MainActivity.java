@@ -1,5 +1,6 @@
 package fcu.shang.adoptionanimal;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -36,10 +38,16 @@ import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
+import com.facebook.share.model.ShareContent;
+import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -87,6 +95,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     setFullAdapter(msg.arg1,copyList);
                     break;
                 case 3:
+                    SharePhoto sharePhoto=new SharePhoto.Builder()
+                            .setBitmap((Bitmap) msg.obj)
+                            .setCaption("TEST")
+                            .build();
+                    SharePhotoContent sharePhotoContent=new SharePhotoContent.Builder()
+                            .addPhoto(sharePhoto)
+                            .build();
+                    ShareDialog shareDialog=new ShareDialog(MainActivity.this);
+                    shareDialog.show(sharePhotoContent, ShareDialog.Mode.AUTOMATIC);
 
                     break;
 
@@ -337,5 +354,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
 }
+
