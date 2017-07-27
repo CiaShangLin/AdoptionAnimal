@@ -319,10 +319,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        if (id == R.id.menu_doctors) {
+        if(id==R.id.menu_shelter){
 
-        } else if (id == R.id.menu_lost) {
+        }else if (id == R.id.menu_doctors) {
 
+        }else if (id == R.id.menu_lost) {
+
+        }else if(id==R.id.menu_track){
+            
         }else if(id == R.id.menu_email){
             Intent email=new Intent(Intent.ACTION_SENDTO);
             email.setData(Uri.parse("mailto:west7418@gmail.com"));

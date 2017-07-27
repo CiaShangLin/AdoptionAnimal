@@ -18,6 +18,9 @@
         <item>貓</item>
     </string-array>
 
+    <string name="male">♂</string>
+    <string name="female">♀</string>
+
     <string-array name="shelter_url"></string-array>
 
     <string name="facebook_app_id">794686284045233</string>

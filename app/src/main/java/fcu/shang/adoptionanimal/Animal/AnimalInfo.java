@@ -1,6 +1,7 @@
 package fcu.shang.adoptionanimal.Animal;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -122,13 +123,23 @@ public class AnimalInfo{
         return list;
     }
 
-    public void sharePhoto(Animal animal){
+    public ArrayList<Animal> getTrackAnimalList(SharedPreferences sp){      //取得追蹤的動物LIST
+        ArrayList<Animal> trackAnimal=new ArrayList<>();
+        for(int i=0;i<animalList.size();i++){
+            if(!sp.getString(animalList.get(i).getAnimal_id(),"").equals("")){     //不等於"",就是有
+                trackAnimal.add(animalList.get(i));
+            }
+        }
+        return trackAnimal;
+    }
+
+    public void sharePhoto(Animal animal){                        //FB要用的圖片
         DownloadImgTask downloadImgTask=new DownloadImgTask();
         downloadImgTask.execute(animal.getAlbum_file());
     }
 
 
-    class DownloadImgTask extends AsyncTask<String,Void,Bitmap> {
+    class DownloadImgTask extends AsyncTask<String,Void,Bitmap> {       //因為setImageURl有問題,所以只好改用Bitmap
         @Override
         protected Bitmap doInBackground(String... params) {
 
