@@ -269,7 +269,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             toolbar.setTitle(R.string.toolbartitle);
             toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);
             toolbar.getMenu().findItem(R.id.picture_mode).setVisible(true);
-            toolbar.setVisibility(View.VISIBLE);
 
             if(afterAdapter==1){                                                  //從FULL切回圖片模式
                 adoptionSp.setVisibility(View.VISIBLE);
