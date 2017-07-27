@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -138,8 +139,13 @@ public class AnimalInfo{
                 bitmap= BitmapFactory.decodeStream(inputStream);
             }catch (MalformedURLException e) {
                 e.printStackTrace();
-            } catch (IOException e) {
+                return null;
+            } catch (FileNotFoundException e){
                 e.printStackTrace();
+                return null;
+            }catch (IOException e) {
+                e.printStackTrace();
+                return null;
             }
 
             return bitmap;

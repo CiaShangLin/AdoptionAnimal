@@ -39,6 +39,7 @@ import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareContent;
+import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
@@ -95,10 +96,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     setFullAdapter(msg.arg1,copyList);
                     break;
                 case 3:
-                    SharePhoto sharePhoto=new SharePhoto.Builder()
-                            .setBitmap((Bitmap) msg.obj)
-                            .setCaption("TEST")
-                            .build();
+                    Animal animal=(Animal)msg.obj;
+                    SharePhoto sharePhoto;
+
+                    if(msg.obj==null){
+                        Log.d("Handler","NULL");
+                        Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.failed_image);
+                        sharePhoto=new SharePhoto.Builder().setBitmap(bitmap).build();
+                    }else{
+                        Log.d("Handler","NOT NULL");
+                        sharePhoto=new SharePhoto.Builder()
+                                .setImageUrl(Uri.parse(animal.getAlbum_file()))
+                                .build();
+                    }
                     SharePhotoContent sharePhotoContent=new SharePhotoContent.Builder()
                             .addPhoto(sharePhoto)
                             .build();
