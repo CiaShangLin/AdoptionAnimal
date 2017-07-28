@@ -27,7 +27,7 @@ public class MyTrackAdapter extends RecyclerView.Adapter<MyTrackAdapter.ViewHold
     private ArrayList<Animal> animalList;
     private AnimalInfo animalInfo;
     private SharedPreferences sp;
-
+    String sex_male="♂",sex_female="♀";
 
     public MyTrackAdapter(AnimalInfo animalInfo, ArrayList<Animal> animalList,SharedPreferences sp) {
         this.animalInfo=animalInfo;
@@ -36,12 +36,15 @@ public class MyTrackAdapter extends RecyclerView.Adapter<MyTrackAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
+        TextView track_id,track_body,track_shelter;
+        NetworkImageView track_img;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            TextView track_id=(TextView)itemView.findViewById(R.id.track_id);
-            TextView track_body=(TextView)itemView.findViewById(R.id.track_body);
-            TextView track_shelter=(TextView)itemView.findViewById(R.id.track_shelter);
-            NetworkImageView track_img=(NetworkImageView)itemView.findViewById(R.id.track_img);
+            track_id=(TextView)itemView.findViewById(R.id.track_id);
+            track_body=(TextView)itemView.findViewById(R.id.track_body);
+            track_shelter=(TextView)itemView.findViewById(R.id.track_shelter);
+            track_img=(NetworkImageView)itemView.findViewById(R.id.track_img);
             track_img.setErrorImageResId(R.drawable.failed_image);
         }
     }
@@ -56,6 +59,29 @@ public class MyTrackAdapter extends RecyclerView.Adapter<MyTrackAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(MyTrackAdapter.ViewHolder holder, int position) {
+        holder.track_id.setText(animalList.get(position).getAnimal_id());
+        StringBuffer sb=new StringBuffer("");
+        if(animalList.get(position).getAnimal_bodytype().equals("BIG")){
+            sb.append("大型");
+        }else if(animalList.get(position).getAnimal_bodytype().equals("MINI")){
+            sb.append("迷你");
+        }else if (animalList.get(position).getAnimal_bodytype().equals("MEDIUM")){
+            sb.append("中型");
+        }else if(animalList.get(position).getAnimal_bodytype().equals("SMALL")){
+            sb.append("小型");
+        }
+        sb.append("   "+animalList.get(position).getAnimal_colour());
+        if(animalList.get(position).getAnimal_sex().equals("M")){
+            sb.append("   "+sex_male);
+        }else{
+            sb.append("   "+sex_female);
+        }
+
+        holder.track_body.setText(sb.toString());
+        holder.track_shelter.setText(animalList.get(position).getShelter_name());
+        animalInfo.setImage(holder.track_img,animalList.get(position));
+        holder.itemView.setTag(position);
+
 
 
     }

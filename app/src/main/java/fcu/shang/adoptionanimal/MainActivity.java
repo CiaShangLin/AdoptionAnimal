@@ -326,7 +326,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (id == R.id.menu_lost) {
 
         }else if(id==R.id.menu_track){
-            
+            infoLayoutManager=new LinearLayoutManager(this);
+            infoRecylerView.setLayoutManager(infoLayoutManager);
+
+            infoAdapter=new MyTrackAdapter(animalInfo,animalInfo.getTrackAnimalList(sp),sp);
+            infoRecylerView.setAdapter(infoAdapter);
+
         }else if(id == R.id.menu_email){
             Intent email=new Intent(Intent.ACTION_SENDTO);
             email.setData(Uri.parse("mailto:west7418@gmail.com"));
