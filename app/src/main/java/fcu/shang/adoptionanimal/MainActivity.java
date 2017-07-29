@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(beforeAdapter==3){                                               //從FULLINFO切回來
+        }else if(beforeAdapter==3 || beforeAdapter==4){                                               //從FULLINFO切回來
             toolbar.setSubtitle(R.string.tootbarsubtitle);
             toolbar.setTitle(R.string.toolbartitle);
             toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
                 setPictureAdapter(copyList);
-            }else{                                                               //從FULL切回列表模式
+            }else if(afterAdapter==2){                                             //從FULL切回列表模式
                 adoptionSp.setVisibility(View.VISIBLE);
                 dogcatSp.setVisibility(View.VISIBLE);
                 setListAdapter(copyList);
@@ -297,6 +297,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (id){
             case R.id.menu_search:
+
                 break;
             case R.id.picture_mode:
                 if(item.getTitle().equals("圖片模式")){
@@ -319,18 +320,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        if(id==R.id.menu_shelter){
+        if(id==R.id.menu_shelter){                                    //收容所
+            Intent intent=new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://animal-adoption.coa.gov.tw/index.php/shelter#"));
+            startActivity(intent);
 
         }else if (id == R.id.menu_doctors) {
+            Toast.makeText(MainActivity.this,"尚未實作",Toast.LENGTH_SHORT).show();
 
         }else if (id == R.id.menu_lost) {
-
-        }else if(id==R.id.menu_track){
+            Toast.makeText(MainActivity.this,"尚未實作",Toast.LENGTH_SHORT).show();
+        }else if(id==R.id.menu_track){                                 //追蹤寵物
             infoLayoutManager=new LinearLayoutManager(this);
             infoRecylerView.setLayoutManager(infoLayoutManager);
 
             infoAdapter=new MyTrackAdapter(animalInfo,animalInfo.getTrackAnimalList(sp),sp);
             infoRecylerView.setAdapter(infoAdapter);
+            beforeAdapter=4;
 
         }else if(id == R.id.menu_email){
             Intent email=new Intent(Intent.ACTION_SENDTO);

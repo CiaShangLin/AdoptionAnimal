@@ -80,9 +80,8 @@ public class MyTrackAdapter extends RecyclerView.Adapter<MyTrackAdapter.ViewHold
         holder.track_body.setText(sb.toString());
         holder.track_shelter.setText(animalList.get(position).getShelter_name());
         animalInfo.setImage(holder.track_img,animalList.get(position));
+
         holder.itemView.setTag(position);
-
-
 
     }
 
@@ -93,6 +92,6 @@ public class MyTrackAdapter extends RecyclerView.Adapter<MyTrackAdapter.ViewHold
 
     @Override
     public void onClick(View v) {
-
+        animalInfo.opneFullInfo(animalList.get((int)v.getTag()).getTag());
     }
 }
