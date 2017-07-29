@@ -53,7 +53,7 @@ public class MyPictureAdapter extends RecyclerView.Adapter<MyPictureAdapter.View
             info_type=(ImageView)v.findViewById(R.id.info_type);
 
             mNetworkImageView=(NetworkImageView)v.findViewById(R.id.img);
-            mNetworkImageView.setDefaultImageResId(R.drawable.animal);
+            //mNetworkImageView.setDefaultImageResId(R.drawable.animal);
             mNetworkImageView.setErrorImageResId(R.drawable.failed_image);
         }
     }

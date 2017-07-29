@@ -4,16 +4,17 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/menu_shelter"
+            android:icon="@drawable/shelter"
             android:title="收容所" />
         <item
             android:id="@+id/menu_doctors"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/syringe"
             android:title="獸醫師">
         </item>
 
         <item
             android:id="@+id/menu_lost"
-            android:icon="@drawable/gmail"
+            android:icon="@drawable/lost"
             android:title="寵物遺失">
         </item>
 

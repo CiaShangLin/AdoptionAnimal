@@ -6,6 +6,43 @@
     android:orientation="vertical"
     android:padding="10dp">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/fullImg"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+        <ImageButton
+            android:id="@+id/full_track"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right"
+            android:layout_marginEnd="48dp"
+            android:layout_weight="0.07"
+            android:background="@null"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/off_track" />
+
+        <ImageButton
+            android:id="@+id/full_facebook"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="right"
+            android:layout_weight="0.12"
+            android:background="@null"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/facebook" />
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,48 +50,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorBlue"
             android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.android.volley.toolbox.NetworkImageView
-                    android:id="@+id/fullImg"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentStart="true" />
-
-                <ImageButton
-                    android:id="@+id/full_track"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="right"
-                    android:layout_marginEnd="48dp"
-                    android:layout_weight="0.07"
-                    android:background="@null"
-                    android:elevation="0dp"
-                    app:srcCompat="@drawable/off_track" />
-
-                <ImageButton
-                    android:id="@+id/full_facebook"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_gravity="right"
-                    android:layout_weight="0.12"
-                    android:background="@null"
-                    android:elevation="0dp"
-                    app:srcCompat="@drawable/facebook" />
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -78,6 +81,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -100,6 +105,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -123,6 +130,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -146,6 +155,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -169,6 +180,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -192,6 +205,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -215,6 +230,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -238,6 +255,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -261,6 +280,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -284,6 +305,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -307,6 +330,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -330,6 +355,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -353,6 +380,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -377,6 +406,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -399,6 +430,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -422,6 +455,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -445,6 +480,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -468,6 +505,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/strock"
                 android:orientation="horizontal">
 
                 <TextView
@@ -490,10 +529,5 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
 
 </LinearLayout>
