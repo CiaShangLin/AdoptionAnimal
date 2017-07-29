@@ -297,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch (id){
             case R.id.menu_search:
-
+                Toast.makeText(MainActivity.this,"尚未實作",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.picture_mode:
                 if(item.getTitle().equals("圖片模式")){
