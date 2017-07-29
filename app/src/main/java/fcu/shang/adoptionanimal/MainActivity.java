@@ -44,6 +44,10 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case 1:
+                    admod();
                     setShelterName();
                     initLayout();
                     break;
@@ -159,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         sp=getSharedPreferences(FAVORITE,MODE_PRIVATE);     //初始化資料庫
         FacebookSdk.sdkInitialize(getApplicationContext());          //初始化 FB SDK
+
     }
 
 
@@ -179,6 +185,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         while(iterator.hasNext()){
             shelterName[count++]=(String)iterator.next();
         }
+    }
+
+    private void admod(){
+        //MobileAds.initialize(getApplicationContext(), "ca-app-pub-3596318314144695/8604054382");
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("BD34A9A0939A0A4AF862F98AB60A85E4").build();
+        mAdView.loadAd(adRequest);
     }
 
     AdapterView.OnItemSelectedListener adoptionSpListener=new AdapterView.OnItemSelectedListener() {

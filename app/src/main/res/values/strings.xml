@@ -24,4 +24,5 @@
     <string-array name="shelter_url"></string-array>
 
     <string name="facebook_app_id">794686284045233</string>
+    <string name="admob">ca-app-pub-3596318314144695/8604054382</string>
 </resources>
