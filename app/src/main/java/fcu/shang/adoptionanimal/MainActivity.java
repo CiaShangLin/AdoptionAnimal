@@ -242,6 +242,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         beforeAdapter=1;
         afterAdapter=1;
+        Log.d("Adapter",beforeAdapter+" "+afterAdapter);
     }
 
     private void setListAdapter(ArrayList<Animal> animalList){                            //列表模式
@@ -254,6 +255,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         beforeAdapter=2;
         afterAdapter=2;
+        Log.d("Adapter",beforeAdapter+" "+afterAdapter);
     }
 
     private void setFullAdapter(int position,ArrayList<Animal> animalList){                        //全部資訊
@@ -268,6 +270,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         infoRecylerView.setAdapter(infoAdapter);
         infoRecylerView.scrollToPosition(position);          //可以移動到position的位置
         beforeAdapter=3;
+        Log.d("Adapter",beforeAdapter+" "+afterAdapter);
 
     }
 
@@ -350,6 +353,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             infoAdapter=new MyTrackAdapter(animalInfo,copyList,sp);
             infoRecylerView.setAdapter(infoAdapter);
             beforeAdapter=4;
+            Log.d("Adapter",beforeAdapter+" "+afterAdapter);
 
         }else if(id == R.id.menu_email){
             Intent email=new Intent(Intent.ACTION_SENDTO);
