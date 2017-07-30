@@ -31,6 +31,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -76,9 +78,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AnimalInfo animalInfo;
     private String dogcatPick="全部",adoptionPick="全部";
     private ArrayList<Animal> copyList;
-    int  beforeAdapter=1,afterAdapter=1;
+    private int beforeAdapter=1,afterAdapter=1;
     private SharedPreferences sp;
-
+    private CustomProgressDialog progressDialog = null;
 
 
      /*GIT 應該用SSH clone下來,才能在別台電腦上傳 大概吧
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     admod();
                     setShelterName();
                     initLayout();
+                    progressDialog.dismiss();
                     break;
                 case 2:                                 //FULLINFO模式
                     toolbar.setSubtitle(null);
@@ -128,9 +131,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(progressDialog==null){
+            progressDialog=CustomProgressDialog.createDialog(this);
+            progressDialog.setMessage("Loading");
+        }
+        progressDialog.show();
         inputData();
     }
 
