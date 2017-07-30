@@ -188,8 +188,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void admod(){
-        //MobileAds.initialize(getApplicationContext(), "ca-app-pub-3596318314144695/8604054382");
-
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().addTestDevice("BD34A9A0939A0A4AF862F98AB60A85E4").build();
         mAdView.loadAd(adRequest);
@@ -278,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else if(beforeAdapter==3 || beforeAdapter==4){                                               //從FULLINFO切回來
+        }else if(beforeAdapter==3 || beforeAdapter==4){                           //從FULLINFO切回來
             toolbar.setSubtitle(R.string.tootbarsubtitle);
             toolbar.setTitle(R.string.toolbartitle);
             toolbar.getMenu().findItem(R.id.menu_search).setVisible(true);
@@ -348,7 +346,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             infoLayoutManager=new LinearLayoutManager(this);
             infoRecylerView.setLayoutManager(infoLayoutManager);
 
-            infoAdapter=new MyTrackAdapter(animalInfo,animalInfo.getTrackAnimalList(sp),sp);
+            copyList=animalInfo.getTrackAnimalList(sp);
+            infoAdapter=new MyTrackAdapter(animalInfo,copyList,sp);
             infoRecylerView.setAdapter(infoAdapter);
             beforeAdapter=4;
 
