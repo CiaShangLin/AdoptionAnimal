@@ -1,6 +1,7 @@
 package fcu.shang.adoptionanimal;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -95,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     setShelterName();
                     initLayout();
                     progressDialog.dismiss();
+                    progressDialog=null;
                     break;
                 case 2:                                 //FULLINFO模式
                     toolbar.setSubtitle(null);
@@ -135,12 +139,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(progressDialog==null){
-            progressDialog=CustomProgressDialog.createDialog(this);
-            progressDialog.setMessage("Loading");
+        if(!isConnected()){
+            showDialog();
         }
-        progressDialog.show();
-        inputData();
+    }
+
+
+    private void showDialog(){
+        new AlertDialog.Builder(MainActivity.this)
+                .setTitle("網路開啟判斷")
+                .setIcon(R.drawable.wifi)
+                .setMessage("請開啟網際網路")
+                .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(isConnected()){
+                            if(progressDialog==null){
+                                progressDialog=CustomProgressDialog.createDialog(MainActivity.this);
+                                progressDialog.setMessage("Loading");
+                            }
+                            progressDialog.show();
+                            inputData();
+                        }else{
+                            showDialog();
+                        }
+                    }
+                }).show();
+    }
+
+    private void inputData(){                         //取得所有動物資訊列表
+        animalInfo=new AnimalInfo(handler,MainActivity.this);
+        animalInfo.getInfo();
     }
 
     private void initLayout(){
@@ -176,11 +205,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
-    private void inputData(){                         //取得所有動物資訊列表
-        animalInfo=new AnimalInfo(handler,MainActivity.this);
-        animalInfo.getInfo();
-    }
 
     private void setShelterName(){                             //取出所有收容所名稱,且不重複
         HashSet shelterSet=new HashSet();
@@ -385,6 +409,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private boolean isConnected(){             //判斷是否有沒有開網路
+        ConnectivityManager cm=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=cm.getActiveNetworkInfo();
+        if(networkInfo!=null && networkInfo.isConnected()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private void printKeyHash(){            //印出keyhash
