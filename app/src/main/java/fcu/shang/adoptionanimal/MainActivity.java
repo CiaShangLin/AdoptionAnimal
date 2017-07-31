@@ -108,9 +108,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     setFullAdapter(msg.arg1,copyList);
                     break;
                 case 3:
-                    Animal animal=(Animal)msg.obj;
-                    SharePhoto sharePhoto;
 
+                    SharePhoto sharePhoto;
                     if(msg.obj==null){
                         Log.d("Handler","NULL");
                         Bitmap bitmap=BitmapFactory.decodeResource(getResources(),R.drawable.failed_image);
@@ -118,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }else{
                         Log.d("Handler","NOT NULL");
                         sharePhoto=new SharePhoto.Builder()
-                                .setImageUrl(Uri.parse(animal.getAlbum_file()))
+                                .setBitmap((Bitmap)msg.obj)
                                 .build();
                     }
                     SharePhotoContent sharePhotoContent=new SharePhotoContent.Builder()
