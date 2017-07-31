@@ -141,6 +141,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(!isConnected()){
             showDialog();
+        }else{
+            inputData();
         }
     }
 
@@ -154,11 +156,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if(isConnected()){
-                            if(progressDialog==null){
-                                progressDialog=CustomProgressDialog.createDialog(MainActivity.this);
-                                progressDialog.setMessage("Loading");
-                            }
-                            progressDialog.show();
                             inputData();
                         }else{
                             showDialog();
@@ -168,6 +165,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void inputData(){                         //取得所有動物資訊列表
+        if(progressDialog==null){
+            progressDialog=CustomProgressDialog.createDialog(MainActivity.this);
+            progressDialog.setMessage("Loading");
+        }
+        progressDialog.show();
         animalInfo=new AnimalInfo(handler,MainActivity.this);
         animalInfo.getInfo();
     }
@@ -222,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void admod(){
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("BD34A9A0939A0A4AF862F98AB60A85E4").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
     }
 
